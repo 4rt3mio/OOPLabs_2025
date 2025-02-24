@@ -1,0 +1,15 @@
+D:\csharp\4sem\OOPfl\OOPfl\bin\Debug\net8.0\OOPfl.exe
+D:\csharp\4sem\OOPfl\OOPfl\bin\Debug\net8.0\OOPfl.deps.json
+D:\csharp\4sem\OOPfl\OOPfl\bin\Debug\net8.0\OOPfl.runtimeconfig.json
+D:\csharp\4sem\OOPfl\OOPfl\bin\Debug\net8.0\OOPfl.dll
+D:\csharp\4sem\OOPfl\OOPfl\bin\Debug\net8.0\OOPfl.pdb
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\OOPfl.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\OOPfl.AssemblyInfoInputs.cache
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\OOPfl.AssemblyInfo.cs
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\OOPfl.csproj.CoreCompileInputs.cache
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\OOPfl.sourcelink.json
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\OOPfl.dll
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\refint\OOPfl.dll
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\OOPfl.pdb
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\OOPfl.genruntimeconfig.cache
+D:\csharp\4sem\OOPfl\OOPfl\obj\Debug\net8.0\ref\OOPfl.dll
