@@ -3,16 +3,48 @@
   "WorkspaceRootPath": "D:\\OOP\\LR1\\OOPfl\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\canvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\canvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\addshapecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\addshapecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\removeshapecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\removeshapecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\commandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\commandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\coordinates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\coordinates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
-      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\shapecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\shapecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|d:\\oop\\lr1\\oopfl\\oopfl\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{7D158C4D-4BEC-4137-853E-24B2E91F7CC7}|OOPfl\\OOPfl.csproj|solutionrelative:oopfl\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,42 +54,145 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FileManager.cs",
-              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\FileManager.cs",
-              "RelativeDocumentMoniker": "OOPfl\\FileManager.cs",
-              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\FileManager.cs",
-              "RelativeToolTip": "OOPfl\\FileManager.cs",
+              "DocumentIndex": 4,
+              "Title": "AddShapeCommand.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\AddShapeCommand.cs",
+              "RelativeDocumentMoniker": "OOPfl\\AddShapeCommand.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\AddShapeCommand.cs",
+              "RelativeToolTip": "OOPfl\\AddShapeCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-24T23:15:39.679Z",
+              "WhenOpened": "2025-02-25T20:22:40.676Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "Coordinates.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\Coordinates.cs",
+              "RelativeDocumentMoniker": "OOPfl\\Coordinates.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\Coordinates.cs",
+              "RelativeToolTip": "OOPfl\\Coordinates.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T20:18:30.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CommandManager.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\CommandManager.cs",
+              "RelativeDocumentMoniker": "OOPfl\\CommandManager.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\CommandManager.cs",
+              "RelativeToolTip": "OOPfl\\CommandManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T19:35:38.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ShapeCommand.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\ShapeCommand.cs",
+              "RelativeDocumentMoniker": "OOPfl\\ShapeCommand.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\ShapeCommand.cs",
+              "RelativeToolTip": "OOPfl\\ShapeCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T19:33:35.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RemoveShapeCommand.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\RemoveShapeCommand.cs",
+              "RelativeDocumentMoniker": "OOPfl\\RemoveShapeCommand.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\RemoveShapeCommand.cs",
+              "RelativeToolTip": "OOPfl\\RemoveShapeCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T19:33:33.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\InputManager.cs",
+              "RelativeDocumentMoniker": "OOPfl\\InputManager.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\InputManager.cs",
+              "RelativeToolTip": "OOPfl\\InputManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T19:32:49.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Canvas.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\Canvas.cs",
+              "RelativeDocumentMoniker": "OOPfl\\Canvas.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\Canvas.cs",
+              "RelativeToolTip": "OOPfl\\Canvas.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAADwvzQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T09:31:09.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "ClassDiagram1.cd",
               "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\ClassDiagram1.cd",
               "RelativeDocumentMoniker": "OOPfl\\ClassDiagram1.cd",
               "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\ClassDiagram1.cd",
               "RelativeToolTip": "OOPfl\\ClassDiagram1.cd",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
-              "WhenOpened": "2025-02-24T23:13:23.592Z",
+              "WhenOpened": "2025-02-25T09:28:10.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Application.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\Application.cs",
+              "RelativeDocumentMoniker": "OOPfl\\Application.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\Application.cs",
+              "RelativeToolTip": "OOPfl\\Application.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAADwv1AAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T07:28:40.668Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
+              "Title": "FileManager.cs",
+              "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\FileManager.cs",
+              "RelativeDocumentMoniker": "OOPfl\\FileManager.cs",
+              "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\FileManager.cs",
+              "RelativeToolTip": "OOPfl\\FileManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T23:15:39.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\Program.cs",
               "RelativeDocumentMoniker": "OOPfl\\Program.cs",
               "ToolTip": "D:\\OOP\\LR1\\OOPfl\\OOPfl\\Program.cs",
               "RelativeToolTip": "OOPfl\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-22T20:05:58.414Z",
               "EditorCaption": ""

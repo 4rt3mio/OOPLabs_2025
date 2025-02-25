@@ -34,8 +34,29 @@
 
         public void Redraw()
         {
-            //TODO
+            Console.Clear();
+
+            Console.Write("┌");
+            for (int x = 0; x < Width; x++)
+                Console.Write("─");
+            Console.WriteLine("┐");
+
+            for (int y = 0; y < Height; y++)
+            {
+                Console.Write("│");
+                for (int x = 0; x < Width; x++)
+                {
+                    Console.Write(grid[y, x]);
+                }
+                Console.WriteLine("│"); 
+            }
+
+            Console.Write("└");
+            for (int x = 0; x < Width; x++)
+                Console.Write("─");
+            Console.WriteLine("┘");
         }
+
 
         public void AddShape(Shape shape)
         {
