@@ -5,7 +5,8 @@
         public int BaseLength { get; private set; }
         public int Height { get; private set; }
 
-        public Triangle(int id, int baseLength, int height, char fillChar) : base(id, fillChar)
+        public Triangle(int id, int baseLength, int height, char fillChar, Coordinates startPosition)
+        : base(id, fillChar, startPosition) 
         {
             BaseLength = baseLength;
             Height = height;

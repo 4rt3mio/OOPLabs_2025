@@ -141,6 +141,7 @@ public class InputManager
     private bool AddShape(string input)
     {
         string[] parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        int id = 0;
 
         if (parts.Length < 6)
         {
@@ -209,13 +210,29 @@ public class InputManager
                 Console.WriteLine("Ошибка: Фигура не помещается в канву.");
                 return false;
             }
+            if (shapeType == "rectangle")
+            {
+                id = canvas.GetShapes().Count;
+                Coordinates crd = new Coordinates(x, y);
+                Shape shape = new Rectangle(id, width, height, symbol, crd);
+                canvas.AddShape(shape);
+            }
+            else
+            {
+                id = canvas.GetShapes().Count;
+                Coordinates crd = new Coordinates(x, y);
+                Shape shape = new Triangle(id, width, height, symbol, crd);
+                canvas.AddShape(shape);
+            }
         }
         else
         {
             Console.WriteLine("Ошибка: Неизвестный тип фигуры.");
             return false; 
         }
-        // TODO: Логика для добавления прямоугольника через commandManager
+
+        ShapeCommand sC = new AddShapeCommand(canvas, id);
+        commandManager.ExecuteCommand(sC);
         return true;
     }
 
@@ -249,7 +266,8 @@ public class InputManager
             return false;
         }
 
-        // TODO Удалить фигуру из коллекции
+        ShapeCommand rC = new RemoveShapeCommand(canvas, id);
+        commandManager.ExecuteCommand(rC);
         return true;
     }
 
@@ -317,7 +335,9 @@ public class InputManager
                 return false;
             }
         }
-        //todo Движение фигур
+        Coordinates crd = new Coordinates(deltaX, deltaY);
+        ShapeCommand mC = new MoveShapeCommand(canvas, id, crd);
+        commandManager.ExecuteCommand(mC);
         return true;
     }
 
@@ -358,7 +378,8 @@ public class InputManager
             return false;
         }
 
-        //todo Заливка фигуры
+        ShapeCommand fC = new FillBackgroundCommand(canvas, id, fillSymbol, canvas.GetShapeById(id).FillChar);
+        commandManager.ExecuteCommand(fC);
         return true;
     }
 
@@ -372,7 +393,7 @@ public class InputManager
             return false;
         }
 
-        // TODO
+        commandManager.Undo();
         return true;
     }
 
@@ -386,7 +407,7 @@ public class InputManager
             return false;
         }
 
-        // TODO
+        commandManager.Redo();
         return true;
     }
 
@@ -414,7 +435,7 @@ public class InputManager
             return false;
         }
 
-        // TODO: Логика для сохранения канвы в файл по пути filePath
+        fileManager.Save(filePath, canvas, commandManager);
         return true;
     }
 
@@ -442,7 +463,7 @@ public class InputManager
             return false;
         }
 
-        // TODO: Логика загрузки данных и восстановления состояния канвы
+        fileManager.Load(filePath, canvas, commandManager);
         return true;
     }
 }

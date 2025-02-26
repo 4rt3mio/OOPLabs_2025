@@ -2,20 +2,21 @@
 {
     public class AddShapeCommand : ShapeCommand
     {
+        private Shape shape;
 
         public AddShapeCommand(Canvas canvas, int shapeId) : base(canvas, shapeId)
         {
-            //TODO
+            shape = canvas.GetShapeById(shapeId);
         }
 
         public override void Do()
         {
-            //TODO
+            shape.IsVisible = true;
         }
 
         public override void Undo()
         {
-            //TODO
+            shape.IsVisible = false;
         }
     }
 }

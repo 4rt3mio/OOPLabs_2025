@@ -3,7 +3,7 @@
   <Class Name="OOPfl.Shape">
     <Position X="4.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAEAAAEAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAEAAAEAAAAAAAAAAAAAACAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Shape.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -20,28 +20,28 @@
   <Class Name="OOPfl.Circle">
     <Position X="4.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Circle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPfl.Rectangle">
     <Position X="6.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Rectangle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPfl.Triangle">
     <Position X="3" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACABAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Triangle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPfl.Canvas">
     <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAABAIABIAAAAAAAEAAAAAAAAAAAAJAAAAABAA=</HashCode>
+      <HashCode>AAAAIAAABAIABJAAAAAAAEAAAAAAAAAABAJAAAAAJAA=</HashCode>
       <FileName>Canvas.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -49,18 +49,19 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="OOPfl.Application">
-    <Position X="15.5" Y="1" Width="1.5" />
+    <Position X="17.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAACAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAACAAAAAAAAAAQAACAQAAAAAgAAAAAAEAAAA=</HashCode>
       <FileName>Application.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="inputManager" />
+      <Field Name="drawer" />
       <Property Name="canvas" />
     </ShowAsAssociation>
   </Class>
   <Class Name="OOPfl.ShapeCommand">
-    <Position X="8.5" Y="5" Width="1.5" />
+    <Position X="8.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAABAAAAAAAAAACCAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ShapeCommand.cs</FileName>
@@ -70,61 +71,69 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="OOPfl.AddShapeCommand">
-    <Position X="9.5" Y="7.5" Width="1.5" />
+    <Position X="9" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAACAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>AddShapeCommand.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPfl.RemoveShapeCommand">
-    <Position X="11.25" Y="7.5" Width="1.5" />
+    <Position X="10.75" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAACAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>RemoveShapeCommand.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPfl.MoveShapeCommand">
-    <Position X="7.75" Y="7.5" Width="1.5" />
+    <Position X="7.25" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAAAAEAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABBAAAAAAAEAACAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>MoveShapeCommand.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPfl.FillBackgroundCommand">
-    <Position X="6" Y="7.5" Width="1.5" />
+    <Position X="5.5" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAABAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAABAAAAAAAAAAACAAAAEAAAAAAAAAABAA=</HashCode>
       <FileName>FillBackgroundCommand.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPfl.CommandManager">
-    <Position X="13.25" Y="5" Width="1.5" />
+    <Position X="12" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAEAAAAAABAAAAAAAAAAhAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CommandManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Field Name="executedCommands" />
-      <Field Name="undoneCommands" />
+      <Property Name="executedCommands" />
+      <Property Name="undoneCommands" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="OOPfl.FileManager">
-    <Position X="13.25" Y="7.5" Width="1.5" />
+    <Position X="16.5" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgIAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>FileManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPfl.InputManager">
-    <Position X="16" Y="6.25" Width="1.5" />
+  <Class Name="InputManager">
+    <Position X="12.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAIAAAAAAABAAAAAAAAAADAAAgAAAAiAAAAgAIAFA=</HashCode>
       <FileName>InputManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="commandManager" />
       <Field Name="fileManager" />
+      <Field Name="commandManager" />
+      <Field Name="canvas" />
     </ShowAsAssociation>
+  </Class>
+  <Class Name="OOPfl.Drawer">
+    <Position X="17.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAgAAAAAAAAACAAAAABAAIAAAQAAAAAA=</HashCode>
+      <FileName>Drawer.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -5,7 +5,8 @@
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        public Rectangle(int id, int width, int height, char fillChar) : base(id, fillChar)
+        public Rectangle(int id, int width, int height, char fillChar, Coordinates startPosition)
+        : base(id, fillChar, startPosition)
         {
             Width = width;
             Height = height;

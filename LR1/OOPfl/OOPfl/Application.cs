@@ -4,14 +4,16 @@
     {
         private Canvas canvas { set; get; }
         private InputManager inputManager;
+        private Drawer drawer;
 
         public Application()
         {
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             InitializeCanvas();
-            FileManager fileManager = new FileManager(canvas);
+            FileManager fileManager = new FileManager();
             CommandManager commandManager = new CommandManager();
             inputManager = new InputManager(fileManager, commandManager, canvas);
+            drawer = new Drawer(canvas);
         }
 
         private void InitializeCanvas()
@@ -83,7 +85,7 @@
 
                 if (success)
                 {
-                    canvas.Redraw();
+                    drawer.Draw();
                 }
             }
         }

@@ -2,8 +2,8 @@
 {
     public class CommandManager
     {
-        private Stack<ShapeCommand> executedCommands;  
-        private Stack<ShapeCommand> undoneCommands;    
+        public Stack<ShapeCommand> executedCommands { set; get; }  
+        public Stack<ShapeCommand> undoneCommands { set; get; }
 
         public CommandManager()
         {

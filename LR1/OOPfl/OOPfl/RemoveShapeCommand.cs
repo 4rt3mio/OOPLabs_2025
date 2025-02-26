@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace OOPfl
+﻿namespace OOPfl
 {
     public class RemoveShapeCommand : ShapeCommand
     {
+        private Shape shape;
         public RemoveShapeCommand(Canvas canvas, int shapeId) : base(canvas, shapeId)
         {
-            // TODO
+            shape = canvas.GetShapeById(shapeId);
         }
 
         public override void Do()
         {
-            // TODO
+            shape.IsVisible = false;
         }
 
         public override void Undo()
         {
-            // TODO
+            shape.IsVisible = true;
         }
     }
 }

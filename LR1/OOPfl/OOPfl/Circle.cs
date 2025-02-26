@@ -4,7 +4,8 @@
     {
         public int Radius { get; private set; }
 
-        public Circle(int id, int radius, char fillChar) : base(id, fillChar)
+        public Circle(int id, int radius, char fillChar, Coordinates startPosition)
+        : base(id, fillChar, startPosition)
         {
             Radius = radius;
         }
