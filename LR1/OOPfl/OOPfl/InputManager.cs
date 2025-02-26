@@ -184,6 +184,10 @@ public class InputManager
                 Console.WriteLine("Ошибка: Окружность не помещается в канву.");
                 return false;
             }
+            id = canvas.GetShapes().Count;
+            Coordinates crd = new Coordinates(x, y);
+            Shape shape = new Circle(id, radius, symbol, crd);
+            canvas.AddShape(shape);
         }
         else if (shapeType == "rectangle" || shapeType == "triangle")
         {
