@@ -7,6 +7,7 @@
 
         public Application()
         {
+            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             InitializeCanvas();
             FileManager fileManager = new FileManager(canvas);
             CommandManager commandManager = new CommandManager();
@@ -15,8 +16,14 @@
 
         private void InitializeCanvas()
         {
-            int width = GetValidatedIntInput("Введите ширину канвы: ", min: 5, max: Console.WindowWidth - 2);
-            int height = GetValidatedIntInput("Введите высоту канвы: ", min: 5, max: Console.WindowHeight - 3);
+            int maxWidth = Console.WindowWidth - 6;
+            int maxHeight = Console.WindowHeight - 3;
+
+            Console.WriteLine($"Максимально доступный размер канвы: {maxWidth}x{maxHeight}");
+            Console.WriteLine("Введите размеры канвы:");
+
+            int width = GetValidatedIntInput($"Ширина (5-{maxWidth}): ", 5, maxWidth);
+            int height = GetValidatedIntInput($"Высота (5-{maxHeight}): ", 5, maxHeight);
             char backgroundChar = GetValidCharInput("Введите символ фона: ");
 
             canvas = new Canvas(width, height, backgroundChar);
@@ -54,27 +61,30 @@
         {
             Console.Clear();
             canvas.Redraw();
+
             while (true)
             {
-                Console.Write("\nВведите команду: ");
-                string input = Console.ReadLine()?.Trim();
+                Console.Write("Введите команду: ");
+                string input = Console.ReadLine()?.Trim().ToLower();
 
                 if (string.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("Ошибка: Команда не может быть пустой!");
-                    continue;
+                    continue; 
                 }
 
-                if (input.ToLower() == "/q")
+                if (input == "/q")
                 {
-                    Console.WriteLine("Выход из приложения...");
+                    Console.WriteLine("Выход из программы...");
                     break;
                 }
 
-                inputManager.ProcessInput(input);
+                bool success = inputManager.ProcessInput(input);
 
-                Console.Clear();
-                canvas.Redraw();
+                if (success)
+                {
+                    canvas.Redraw();
+                }
             }
         }
     }
