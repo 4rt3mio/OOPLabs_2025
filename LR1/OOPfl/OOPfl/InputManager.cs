@@ -331,11 +331,25 @@ public class InputManager
                 return false;
             }
         }
-        else
+        else if (shape is Rectangle rectangle)
         {
-            if (newX < 0 || newX >= canvas.Width || newY < 0 || newY >= canvas.Height)
+            int width = rectangle.Width;
+            int height = rectangle.Height;
+
+            if (newX < 0 || newY < 0 || newX + width >= canvas.Width || newY + height >= canvas.Height)
             {
-                Console.WriteLine("Ошибка: Фигура выходит за пределы канвы.");
+                Console.WriteLine("Ошибка: Прямоугольник выходит за пределы канвы.");
+                return false;
+            }
+        }
+        else if (shape is Triangle triangle)
+        {
+            int width = triangle.BaseLength;
+            int height = triangle.Height;
+
+            if (newX < 0 || newY < 0 || newX + width >= canvas.Width || newY + height >= canvas.Height)
+            {
+                Console.WriteLine("Ошибка: Прямоугольник выходит за пределы канвы.");
                 return false;
             }
         }

@@ -8,7 +8,7 @@ namespace OOPfl
     public abstract class ShapeCommand
     {
         protected Canvas canvas;
-        protected int shapeId;
+        public int shapeId { private set; get; }
 
         public ShapeCommand(Canvas canvas, int shapeId)
         {

@@ -18,7 +18,7 @@
 
         private void InitializeCanvas()
         {
-            int maxWidth = Console.WindowWidth - 6;
+            int maxWidth = Console.WindowWidth/2 - 6;
             int maxHeight = Console.WindowHeight - 3;
 
             Console.WriteLine($"Максимально доступный размер канвы: {maxWidth}x{maxHeight}");

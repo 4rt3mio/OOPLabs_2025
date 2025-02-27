@@ -1,0 +1,11 @@
+Shapes:
+ShapeId:0,
+Circle:30,30,10,*
+ShapeId:1,
+Rectangle:0,0,20,20,^
+
+UndoCommands:
+
+RedoCommands:
+AddShape:1
+AddShape:0

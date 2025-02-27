@@ -2,8 +2,8 @@
 {
     public class FillBackgroundCommand : ShapeCommand
     {
-        private char newSymbol;
-        private char oldSymbol;
+        public char newSymbol { private set; get; }
+        public char oldSymbol { private set; get; }
         private Shape shape;
 
         public FillBackgroundCommand(Canvas canvas, int shapeId, char symbol, char oldSymbol) : base(canvas, shapeId)

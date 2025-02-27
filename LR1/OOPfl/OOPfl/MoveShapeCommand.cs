@@ -3,7 +3,7 @@
     public class MoveShapeCommand : ShapeCommand
     {
         private Coordinates startPosition;
-        private Coordinates newPosition;
+        public  Coordinates newPosition { private set; get; }
         private Shape shape;
         public MoveShapeCommand(Canvas canvas, int shapeId, Coordinates newPosition) : base(canvas, shapeId)
         {

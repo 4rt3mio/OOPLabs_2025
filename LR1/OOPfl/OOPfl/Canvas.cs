@@ -41,6 +41,11 @@
             return shapes;
         }
 
+        public void SetShapes(List<Shape> sh)
+        {
+            shapes = sh;
+        }
+
         public Shape GetShapeById(int id)
         {
             return shapes.FirstOrDefault(s => s.Id == id);
@@ -51,7 +56,7 @@
             Console.Clear();
 
             Console.Write("┌");
-            for (int x = 0; x < Width; x++)
+            for (int x = 0; x < Width * 2; x++)
                 Console.Write("─");
             Console.WriteLine("┐");
 
@@ -61,12 +66,13 @@
                 for (int x = 0; x < Width; x++)
                 {
                     Console.Write(grid[y, x]);
+                    Console.Write(grid[y, x]);
                 }
                 Console.WriteLine("│"); 
             }
 
             Console.Write("└");
-            for (int x = 0; x < Width; x++)
+            for (int x = 0; x < Width * 2; x++)
                 Console.Write("─");
             Console.WriteLine("┘");
         }

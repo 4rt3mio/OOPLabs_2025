@@ -3,6 +3,7 @@
     public class Drawer
     {
         private Canvas canvas;
+        private const double aspectRatio = 1.0; 
 
         public Drawer(Canvas canvas)
         {
@@ -42,22 +43,17 @@
         {
             int centerX = circle.StartPosition.X;
             int centerY = circle.StartPosition.Y;
-            int radius = circle.Radius;
+            int radiusX = (int)(circle.Radius * aspectRatio); 
+            int radiusY = circle.Radius;
             char fillChar = circle.FillChar;
 
-            for (int y = centerY - radius; y <= centerY + radius; y++)
+            for (int y = -radiusY; y <= radiusY; y++)
             {
-                for (int x = centerX - radius; x <= centerX + radius; x++)
+                for (int x = -radiusX; x <= radiusX; x++)
                 {
-                    int dx = x - centerX;
-                    int dy = y - centerY;
-
-                    if (dx * dx + dy * dy <= radius * radius)
+                    if (((x * x) / (aspectRatio * aspectRatio) + y * y) <= (radiusY * radiusY))
                     {
-                        if (x >= 0 && x < canvas.Width && y >= 0 && y < canvas.Height)
-                        {
-                            canvas.SetElement(x, y, fillChar);
-                        }
+                        canvas.SetElement(centerX + x, centerY + y, fillChar);
                     }
                 }
             }
@@ -67,15 +63,15 @@
         {
             int startX = rectangle.StartPosition.X;
             int startY = rectangle.StartPosition.Y;
-            int width = rectangle.Width;
+            int width = (int)(rectangle.Width * aspectRatio); 
             int height = rectangle.Height;
             char fillChar = rectangle.FillChar;
 
-            for (int y = startY; y < startY + height; y++)
+            for (int y = 0; y < height; y++)
             {
-                for (int x = startX; x < startX + width; x++)
+                for (int x = 0; x < width; x++)
                 {
-                    canvas.SetElement(x, y, fillChar);
+                    canvas.SetElement(startX + x, startY + y, fillChar);
                 }
             }
         }
@@ -84,12 +80,11 @@
         {
             int startX = triangle.StartPosition.X;
             int startY = triangle.StartPosition.Y;
-            int baseLength = triangle.BaseLength;
+            int baseLength = (int)(triangle.BaseLength * aspectRatio);
             int height = triangle.Height;
             char fillChar = triangle.FillChar;
 
             List<(int x, int y)> borderPoints = new List<(int, int)>();
-
 
             for (int i = 0; i < height; i++)
             {
@@ -102,6 +97,7 @@
                 canvas.SetElement(startX + i, startY + height - 1, fillChar);
                 borderPoints.Add((startX + i, startY + height - 1));
             }
+
 
             int x1 = startX, y1 = startY;
             int x2 = startX + baseLength - 1, y2 = startY + height - 1;
