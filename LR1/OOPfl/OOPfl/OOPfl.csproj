@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="CanvasFiles\**" />
+    <EmbeddedResource Remove="CanvasFiles\**" />
+    <None Remove="CanvasFiles\**" />
+  </ItemGroup>
+
 </Project>
