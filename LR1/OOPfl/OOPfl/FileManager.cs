@@ -88,7 +88,7 @@
                     line = line.Trim();
 
                     if (string.IsNullOrEmpty(line))
-                        continue;
+                        break;
 
                     if (line.StartsWith("ShapeId:"))
                     {
@@ -119,13 +119,8 @@
 
                     if (line.StartsWith("UndoCommands:"))
                     {
-                        while ((line = reader.ReadLine()) != null && !line.StartsWith("RedoCommands:"))
+                        while ((line = reader.ReadLine()) != null && !string.IsNullOrEmpty(line))
                         {
-                            line = line.Trim();
-
-                            if (string.IsNullOrEmpty(line))
-                                break;
-
                             ShapeCommand command = CreateCommandFromFile(line, canvas);
                             if (command != null)
                             {
@@ -138,11 +133,6 @@
                     {
                         while ((line = reader.ReadLine()) != null)
                         {
-                            line = line.Trim();
-
-                            if (string.IsNullOrEmpty(line))
-                                break;
-
                             ShapeCommand command = CreateCommandFromFile(line, canvas);
                             if (command != null)
                             {

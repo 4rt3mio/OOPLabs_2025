@@ -51,6 +51,11 @@
             return shapes.FirstOrDefault(s => s.Id == id);
         }
 
+        public void Clear()
+        {
+            shapes.Clear();
+        }
+
         public void Redraw()
         {
             Console.Clear();

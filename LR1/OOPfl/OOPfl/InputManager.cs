@@ -59,6 +59,10 @@ public class InputManager
         {
             return LoadCanvas(input);
         }
+        else if (input.StartsWith("/clear"))
+        {
+            return RestartCanvas(input);
+        }
         else
         {
             Console.WriteLine("Ошибка: Неизвестная команда.");
@@ -72,6 +76,7 @@ public class InputManager
         {
             Console.WriteLine("\nСписок доступных команд:");
             Console.WriteLine("/q - Выйти из программы");
+            Console.WriteLine("/clear - Очистить канву");
             Console.WriteLine("/help - Показать список команд");
             Console.WriteLine("/help [команда] - Показать справку по конкретной команде");
             Console.WriteLine("/ps - Вывести все данные о фигурах");
@@ -129,6 +134,10 @@ public class InputManager
                     Console.WriteLine("Выводит список всех фигур на канве.");
                     Console.WriteLine("  /ps    - Показывает только видимые фигуры");
                     Console.WriteLine("  /ps -a - Показывает все, включая скрытые");
+                    break;
+                case "clear":
+                    Console.WriteLine("\nИспользование: /clear");
+                    Console.WriteLine("Очищает канву и ее историю.");
                     break;
                 default:
                     Console.WriteLine($"Команда '/help {command}' не найдена.");
@@ -426,6 +435,22 @@ public class InputManager
         }
 
         commandManager.Redo();
+        return true;
+    }
+
+    private bool RestartCanvas(string input)
+    {
+        string[] parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (parts.Length != 1)
+        {
+            Console.WriteLine("Ошибка: Команда '/restart' не требует дополнительных аргументов.");
+            return false;
+        }
+
+        canvas.Clear();
+        canvas.FillBackground();
+        commandManager.ClearHistory();
         return true;
     }
 

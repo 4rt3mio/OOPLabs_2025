@@ -3,7 +3,6 @@
     public class Drawer
     {
         private Canvas canvas;
-        private const double aspectRatio = 1.0; 
 
         public Drawer(Canvas canvas)
         {
@@ -43,7 +42,7 @@
         {
             int centerX = circle.StartPosition.X;
             int centerY = circle.StartPosition.Y;
-            int radiusX = (int)(circle.Radius * aspectRatio); 
+            int radiusX = circle.Radius; 
             int radiusY = circle.Radius;
             char fillChar = circle.FillChar;
 
@@ -51,7 +50,7 @@
             {
                 for (int x = -radiusX; x <= radiusX; x++)
                 {
-                    if (((x * x) / (aspectRatio * aspectRatio) + y * y) <= (radiusY * radiusY))
+                    if ((x * x + y * y) <= (radiusY * radiusY))
                     {
                         canvas.SetElement(centerX + x, centerY + y, fillChar);
                     }
@@ -63,7 +62,7 @@
         {
             int startX = rectangle.StartPosition.X;
             int startY = rectangle.StartPosition.Y;
-            int width = (int)(rectangle.Width * aspectRatio); 
+            int width = rectangle.Width; 
             int height = rectangle.Height;
             char fillChar = rectangle.FillChar;
 
@@ -80,7 +79,7 @@
         {
             int startX = triangle.StartPosition.X;
             int startY = triangle.StartPosition.Y;
-            int baseLength = (int)(triangle.BaseLength * aspectRatio);
+            int baseLength = triangle.BaseLength;
             int height = triangle.Height;
             char fillChar = triangle.FillChar;
 

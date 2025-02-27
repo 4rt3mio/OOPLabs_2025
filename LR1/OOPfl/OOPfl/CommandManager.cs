@@ -10,6 +10,11 @@
             executedCommands = new Stack<ShapeCommand>();
             undoneCommands = new Stack<ShapeCommand>();
         }
+        public void ClearHistory()
+        {
+            executedCommands.Clear();
+            undoneCommands.Clear();
+        }
 
         public void ExecuteCommand(ShapeCommand command)
         {
