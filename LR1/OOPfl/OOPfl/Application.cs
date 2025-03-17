@@ -24,9 +24,9 @@
             Console.WriteLine($"Максимально доступный размер канвы: {maxWidth}x{maxHeight}");
             Console.WriteLine("Введите размеры канвы:");
 
-            int width = ConsoleInputHelper.GetValidatedIntInput($"Ширина (5-{maxWidth}): ", 5, maxWidth);
-            int height = ConsoleInputHelper.GetValidatedIntInput($"Высота (5-{maxHeight}): ", 5, maxHeight);
-            char backgroundChar = ConsoleInputHelper.GetValidCharInput("Введите символ фона: ");
+            int width = 100;
+            int height = 55;
+            char backgroundChar = ' ';
 
             canvas = new Canvas(width, height, backgroundChar);
         }
@@ -34,7 +34,7 @@
         public void Start()
         {
             Console.Clear();
-            canvas.Redraw();
+            drawer.Draw();
 
             while (true)
             {

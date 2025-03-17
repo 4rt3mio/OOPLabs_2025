@@ -19,7 +19,29 @@
                     DrawShape(shape);
                 }
             }
-            canvas.Redraw();
+            char[,] grid = canvas.GetGrid();
+            Console.Clear();
+
+            Console.Write("┌");
+            for (int x = 0; x < canvas.Width * 2; x++)
+                Console.Write("─");
+            Console.WriteLine("┐");
+
+            for (int y = 0; y < canvas.Height; y++)
+            {
+                Console.Write("│");
+                for (int x = 0; x < canvas.Width; x++)
+                {
+                    Console.Write(grid[y, x]);
+                    Console.Write(grid[y, x]);
+                }
+                Console.WriteLine("│");
+            }
+
+            Console.Write("└");
+            for (int x = 0; x < canvas.Width * 2; x++)
+                Console.Write("─");
+            Console.WriteLine("┘");
         }
 
         private void DrawShape(Shape shape)
@@ -77,30 +99,16 @@
 
         private void DrawTriangle(Triangle triangle)
         {
-            int startX = triangle.StartPosition.X;
-            int startY = triangle.StartPosition.Y;
-            int baseLength = triangle.BaseLength;
-            int height = triangle.Height;
+            var (ax, ay) = (triangle.PointA.X, triangle.PointA.Y);
+            var (bx, by) = (triangle.PointB.X, triangle.PointB.Y);
+            var (cx, cy) = (triangle.PointC.X, triangle.PointC.Y);
             char fillChar = triangle.FillChar;
 
             List<(int x, int y)> borderPoints = new List<(int, int)>();
 
-            for (int i = 0; i < height; i++)
-            {
-                canvas.SetElement(startX, startY + i, fillChar);
-                borderPoints.Add((startX, startY + i));
-            }
-
-            for (int i = 0; i < baseLength; i++)
-            {
-                canvas.SetElement(startX + i, startY + height - 1, fillChar);
-                borderPoints.Add((startX + i, startY + height - 1));
-            }
-
-
-            int x1 = startX, y1 = startY;
-            int x2 = startX + baseLength - 1, y2 = startY + height - 1;
-            borderPoints.AddRange(DrawBresenhamLine(x1, y1, x2, y2, fillChar));
+            borderPoints.AddRange(DrawBresenhamLine(ax, ay, bx, by, fillChar));
+            borderPoints.AddRange(DrawBresenhamLine(bx, by, cx, cy, fillChar));
+            borderPoints.AddRange(DrawBresenhamLine(cx, cy, ax, ay, fillChar));
 
             FillTriangle(borderPoints, fillChar);
         }

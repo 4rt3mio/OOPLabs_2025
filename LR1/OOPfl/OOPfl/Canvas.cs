@@ -1,4 +1,6 @@
-﻿namespace OOPfl
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace OOPfl
 {
     public class Canvas
     {
@@ -41,6 +43,11 @@
             return shapes;
         }
 
+        public char[,] GetGrid()
+        {
+            return grid;
+        }
+
         public void SetShapes(List<Shape> sh)
         {
             shapes = sh;
@@ -54,32 +61,6 @@
         public void Clear()
         {
             shapes.Clear();
-        }
-
-        public void Redraw()
-        {
-            Console.Clear();
-
-            Console.Write("┌");
-            for (int x = 0; x < Width * 2; x++)
-                Console.Write("─");
-            Console.WriteLine("┐");
-
-            for (int y = 0; y < Height; y++)
-            {
-                Console.Write("│");
-                for (int x = 0; x < Width; x++)
-                {
-                    Console.Write(grid[y, x]);
-                    Console.Write(grid[y, x]);
-                }
-                Console.WriteLine("│"); 
-            }
-
-            Console.Write("└");
-            for (int x = 0; x < Width * 2; x++)
-                Console.Write("─");
-            Console.WriteLine("┘");
         }
 
         public void SetElement(int x, int y, char symbol)

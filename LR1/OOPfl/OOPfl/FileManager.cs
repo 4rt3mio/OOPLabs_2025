@@ -24,7 +24,7 @@
                     }
                     else if (shape is Triangle triangle)
                     {
-                        writer.WriteLine($"Triangle:{triangle.StartPosition.X},{triangle.StartPosition.Y},{triangle.BaseLength},{triangle.Height},{triangle.FillChar}");
+                        writer.WriteLine($"Triangle:{triangle.PointA.X},{triangle.PointA.Y},{triangle.PointB.X},{triangle.PointB.Y},{triangle.PointC.X},{triangle.PointC.Y},{triangle.FillChar}");
                     }
                 }
 
@@ -189,15 +189,16 @@
             else if (line.StartsWith("Triangle:"))
             {
                 string[] parts = line.Split(':')[1].Split(',');
-                int x = int.Parse(parts[0]);
-                int y = int.Parse(parts[1]);
-                int baseLength = int.Parse(parts[2]);
-                int height = int.Parse(parts[3]);
-                char fillChar = char.Parse(parts[4]);
+                int ax = int.Parse(parts[0]);
+                int ay = int.Parse(parts[1]);
+                int bx = int.Parse(parts[2]);
+                int by = int.Parse(parts[3]);
+                int cx = int.Parse(parts[4]);
+                int cy = int.Parse(parts[5]);
+                char fillChar = char.Parse(parts[6]);
 
-                shape = new Triangle(shapeId, baseLength, height, fillChar, new Coordinates(x, y));
+                shape = new Triangle(shapeId, new Coordinates(ax, ay), new Coordinates(bx, by), new Coordinates(cx, cy), fillChar);
             }
-
             return shape;
         }
 

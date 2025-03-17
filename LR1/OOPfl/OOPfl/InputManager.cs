@@ -98,7 +98,7 @@ public class InputManager
                     Console.WriteLine("\nИспользование: /add [фигура] [x] [y] [символ] [параметры]");
                     Console.WriteLine("Примеры:");
                     Console.WriteLine("  /add rectangle 5 5 # 10 6  - Прямоугольник 10x6 на (5,5)");
-                    Console.WriteLine("  /add triangle 3 3 * 7 4    - Треугольник шириной 7 и высотой 4 на (3,3)");
+                    Console.WriteLine("  /add triangle 3 3 * 7 4 5 6    - Треугольник шириной 7 и высотой 4 на (3,3)");
                     Console.WriteLine("  /add circle 10 10 @ 5      - Круг радиусом 5 на (10,10)");
                     break;
                 case "remove":
@@ -198,7 +198,7 @@ public class InputManager
             Shape shape = new Circle(id, radius, symbol, crd);
             canvas.AddShape(shape);
         }
-        else if (shapeType == "rectangle" || shapeType == "triangle")
+        else if (shapeType == "rectangle")
         {
             if (parts.Length != 7)
             {
@@ -223,20 +223,39 @@ public class InputManager
                 Console.WriteLine("Ошибка: Фигура не помещается в канву.");
                 return false;
             }
-            if (shapeType == "rectangle")
+            id = canvas.GetShapes().Count;
+            Coordinates crd = new Coordinates(x, y);
+            Shape shape = new Rectangle(id, width, height, symbol, crd);
+            canvas.AddShape(shape);
+        }
+        else if (shapeType == "triangle")
+        {
+            if (parts.Length != 9)
             {
-                id = canvas.GetShapes().Count;
-                Coordinates crd = new Coordinates(x, y);
-                Shape shape = new Rectangle(id, width, height, symbol, crd);
-                canvas.AddShape(shape);
+                Console.WriteLine("Ошибка: Некорректное количество аргументов для треугольника.");
+                return false;
             }
-            else
+
+            if (!int.TryParse(parts[2], out int x1) || x1 < 0 || !int.TryParse(parts[3], out int y1) || y1 < 0 ||
+                !int.TryParse(parts[5], out int x2) || x2 < 0 || !int.TryParse(parts[6], out int y2) || y2 < 0 ||
+                !int.TryParse(parts[7], out int x3) || x3 < 0 || !int.TryParse(parts[8], out int y3) || y3 < 0)
             {
-                id = canvas.GetShapes().Count;
-                Coordinates crd = new Coordinates(x, y);
-                Shape shape = new Triangle(id, width, height, symbol, crd);
-                canvas.AddShape(shape);
+                Console.WriteLine("Ошибка: Координаты вершин треугольника должны быть неотрицательными числами.");
+                return false;
             }
+
+            if ((x2 - x1) * (y3 - y1) == (y2 - y1) * (x3 - x1))
+            {
+                Console.WriteLine("Ошибка: Вершины треугольника не должны лежать на одной прямой.");
+                return false;
+            }
+
+            id = canvas.GetShapes().Count;
+            Coordinates p1 = new Coordinates(x1, y1);
+            Coordinates p2 = new Coordinates(x2, y2);
+            Coordinates p3 = new Coordinates(x3, y3);
+            Shape shape = new Triangle(id, p1, p2, p3, symbol);
+            canvas.AddShape(shape);
         }
         else
         {
@@ -344,17 +363,6 @@ public class InputManager
         {
             int width = rectangle.Width;
             int height = rectangle.Height;
-
-            if (newX < 0 || newY < 0 || newX + width >= canvas.Width || newY + height >= canvas.Height)
-            {
-                Console.WriteLine("Ошибка: Прямоугольник выходит за пределы канвы.");
-                return false;
-            }
-        }
-        else if (shape is Triangle triangle)
-        {
-            int width = triangle.BaseLength;
-            int height = triangle.Height;
 
             if (newX < 0 || newY < 0 || newX + width >= canvas.Width || newY + height >= canvas.Height)
             {

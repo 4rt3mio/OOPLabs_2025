@@ -2,19 +2,21 @@
 {
     public class Triangle : Shape
     {
-        public int BaseLength { get; private set; }
-        public int Height { get; private set; }
+        public Coordinates PointA { get; private set; }
+        public Coordinates PointB { get; private set; }
+        public Coordinates PointC { get; private set; }
 
-        public Triangle(int id, int baseLength, int height, char fillChar, Coordinates startPosition)
-        : base(id, fillChar, startPosition) 
+        public Triangle(int id, Coordinates pointA, Coordinates pointB, Coordinates pointC, char fillChar)
+            : base(id, fillChar, pointA)
         {
-            BaseLength = baseLength;
-            Height = height;
+            PointA = pointA;
+            PointB = pointB;
+            PointC = pointC;
         }
 
         public override string Info()
         {
-            return $"[ID {Id}] Треугольник ({StartPosition.X}, {StartPosition.Y}), Основание: {BaseLength}, Высота: {Height}, '{FillChar}', {(IsVisible ? "Видим" : "Скрыт")}";
+            return $"[ID {Id}] Треугольник A({PointA.X}, {PointA.Y}) B({PointB.X}, {PointB.Y}) C({PointC.X}, {PointC.Y}), '{FillChar}', {(IsVisible ? "Видим" : "Скрыт")}";
         }
     }
 }
