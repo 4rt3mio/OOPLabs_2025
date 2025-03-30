@@ -1,0 +1,223 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\OOP\\LR2\\OOPsl\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\itextstyleimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\itextstyleimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\youreditorclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\youreditorclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\xmladapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\xmladapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\txtadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\txtadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\richtextdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\richtextdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\plaintextdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\plaintextdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\markdowndocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\markdowndocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\jsonadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\jsonadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\idocumentadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\idocumentadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ITextStyleImplementation.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\ITextStyleImplementation.cs",
+              "RelativeDocumentMoniker": "OOPsl\\ITextStyleImplementation.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\ITextStyleImplementation.cs",
+              "RelativeToolTip": "OOPsl\\ITextStyleImplementation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T13:32:23.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ClassDiagram1.cd",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\ClassDiagram1.cd",
+              "RelativeDocumentMoniker": "OOPsl\\ClassDiagram1.cd",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\ClassDiagram1.cd",
+              "RelativeToolTip": "OOPsl\\ClassDiagram1.cd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
+              "WhenOpened": "2025-03-29T13:31:22.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Document.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Document.cs",
+              "RelativeDocumentMoniker": "OOPsl\\Document.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Document.cs",
+              "RelativeToolTip": "OOPsl\\Document.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:19:34.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "XmlAdapter.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\XmlAdapter.cs",
+              "RelativeDocumentMoniker": "OOPsl\\XmlAdapter.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\XmlAdapter.cs",
+              "RelativeToolTip": "OOPsl\\XmlAdapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:18:58.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "JsonAdapter.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\JsonAdapter.cs",
+              "RelativeDocumentMoniker": "OOPsl\\JsonAdapter.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\JsonAdapter.cs",
+              "RelativeToolTip": "OOPsl\\JsonAdapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:18:39.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TxtAdapter.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\TxtAdapter.cs",
+              "RelativeDocumentMoniker": "OOPsl\\TxtAdapter.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\TxtAdapter.cs",
+              "RelativeToolTip": "OOPsl\\TxtAdapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:18:22.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IDocumentAdapter.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\IDocumentAdapter.cs",
+              "RelativeDocumentMoniker": "OOPsl\\IDocumentAdapter.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\IDocumentAdapter.cs",
+              "RelativeToolTip": "OOPsl\\IDocumentAdapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:18:04.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RichTextDocument.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\RichTextDocument.cs",
+              "RelativeDocumentMoniker": "OOPsl\\RichTextDocument.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\RichTextDocument.cs",
+              "RelativeToolTip": "OOPsl\\RichTextDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:01:14.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MarkdownDocument.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MarkdownDocument.cs",
+              "RelativeDocumentMoniker": "OOPsl\\MarkdownDocument.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MarkdownDocument.cs",
+              "RelativeToolTip": "OOPsl\\MarkdownDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:00:41.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlainTextDocument.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\PlainTextDocument.cs",
+              "RelativeDocumentMoniker": "OOPsl\\PlainTextDocument.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\PlainTextDocument.cs",
+              "RelativeToolTip": "OOPsl\\PlainTextDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:00:18.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "YourEditorClass.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\YourEditorClass.cs",
+              "RelativeDocumentMoniker": "OOPsl\\YourEditorClass.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\YourEditorClass.cs",
+              "RelativeToolTip": "OOPsl\\YourEditorClass.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T10:17:57.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Program.cs",
+              "RelativeDocumentMoniker": "OOPsl\\Program.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Program.cs",
+              "RelativeToolTip": "OOPsl\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T09:57:18.23Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

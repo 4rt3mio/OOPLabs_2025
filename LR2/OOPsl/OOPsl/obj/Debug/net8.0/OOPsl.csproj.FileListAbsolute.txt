@@ -1,0 +1,15 @@
+D:\OOP\LR2\OOPsl\OOPsl\bin\Debug\net8.0\OOPsl.exe
+D:\OOP\LR2\OOPsl\OOPsl\bin\Debug\net8.0\OOPsl.deps.json
+D:\OOP\LR2\OOPsl\OOPsl\bin\Debug\net8.0\OOPsl.runtimeconfig.json
+D:\OOP\LR2\OOPsl\OOPsl\bin\Debug\net8.0\OOPsl.dll
+D:\OOP\LR2\OOPsl\OOPsl\bin\Debug\net8.0\OOPsl.pdb
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.GeneratedMSBuildEditorConfig.editorconfig
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.AssemblyInfoInputs.cache
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.AssemblyInfo.cs
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.csproj.CoreCompileInputs.cache
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.sourcelink.json
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.dll
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\refint\OOPsl.dll
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.pdb
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.genruntimeconfig.cache
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\ref\OOPsl.dll
