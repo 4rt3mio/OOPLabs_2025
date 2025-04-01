@@ -1,4 +1,4 @@
-﻿namespace OOPsl
+﻿namespace OOPsl.DocumentFunctions.Formats
 {
     public class MarkdownDocument : Document
     {
