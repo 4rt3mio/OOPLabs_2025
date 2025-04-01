@@ -7,4 +7,4 @@
 Выполнил Суровцев А.И., группа 353505
 
 ## 3. UML-диаграмма
-![Screenshot](./src/Uml.png)
+![Screenshot](./src/UML.png)
