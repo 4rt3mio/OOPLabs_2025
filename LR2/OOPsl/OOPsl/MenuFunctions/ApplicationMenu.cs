@@ -1,19 +1,42 @@
-﻿namespace OOPsl.MenuFunctions
+﻿using OOPsl.DocumentFunctions.Managers;
+using OOPsl.UserFunctions;
+
+namespace OOPsl.MenuFunctions
 {
     public class ApplicationMenu
     {
-        private IMenu menu;
+        private IMenu mainMenu;
 
-        public ApplicationMenu(IMenu menu)
+        public ApplicationMenu(IMenu mainMenu)
         {
-            this.menu = menu;
+            this.mainMenu = mainMenu;
         }
 
         public void Run()
         {
-            while (true)
+            bool exit = false;
+            while (!exit)
             {
-                menu.Display();
+                int option = mainMenu.Display();
+                switch (option)
+                {
+                    case 1:
+                        mainMenu.DisplayUsers();
+                        break;
+                    case 2:
+                        mainMenu.CreateUser();
+                        break;
+                    case 3:
+                        mainMenu.SelectUser();
+                        break;
+                    case 4:
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор. Нажмите любую клавишу для повторного ввода...");
+                        Console.ReadKey();
+                        break;
+                }
             }
         }
     }

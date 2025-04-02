@@ -1,6 +1,7 @@
 ﻿public interface IMenu
 {
-    void Display();
+    int Display();
     void DisplayUsers();
     void CreateUser();
+    void SelectUser();
 }

@@ -2,11 +2,40 @@
 {
     public class MarkdownDocument : Document
     {
-        public override void Create() { }
-        public override void Open() { }
-        public override void Edit() { }
-        public override void Delete() { }
-        public override void Save() { }
-        public override void Load() { }
+        public MarkdownDocument(string fileName)
+        {
+            FileName = fileName;
+            VersionHistory.Add(fileName);
+        }
+
+        public override void Create()
+        {
+            // Реализация создания Markdown документа 
+        }
+
+        public override void Open()
+        {
+            // Реализация открытия Markdown документа 
+        }
+
+        public override void Edit()
+        {
+            // Реализация редактирования Markdown документа 
+        }
+
+        public override void Delete()
+        {
+            // Реализация удаления Markdown документа 
+        }
+
+        public override void Save()
+        {
+            // Реализация сохранения Markdown документа (при вызове из DocumentManager) 
+        }
+
+        public override void Load()
+        {
+            // Реализация загрузки Markdown документа 
+        }
     }
 }

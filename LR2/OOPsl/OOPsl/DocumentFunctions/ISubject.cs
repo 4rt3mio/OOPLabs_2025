@@ -1,4 +1,6 @@
-﻿namespace OOPsl
+﻿using OOPsl.UserFunctions;
+
+namespace OOPsl.DocumentFunctions
 {
     public interface ISubject
     {

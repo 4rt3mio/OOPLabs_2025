@@ -1,4 +1,6 @@
-﻿namespace OOPsl
+﻿using OOPsl.DocumentFunctions;
+
+namespace OOPsl.UserFunctions
 {
     public interface IObserver
     {

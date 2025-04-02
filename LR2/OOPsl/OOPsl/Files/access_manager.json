@@ -1,0 +1,56 @@
+{
+  "rt": [
+    {
+      "Name": "lena",
+      "Role": 2
+    },
+    {
+      "Name": "vlad",
+      "Role": 1
+    },
+    {
+      "Name": "mark",
+      "Role": 0
+    },
+    {
+      "Name": "mila",
+      "Role": 0
+    }
+  ],
+  "gucci": [
+    {
+      "Name": "mark",
+      "Role": 2
+    },
+    {
+      "Name": "vlad",
+      "Role": 0
+    },
+    {
+      "Name": "lena",
+      "Role": 1
+    },
+    {
+      "Name": "mila",
+      "Role": 0
+    }
+  ],
+  "mi": [
+    {
+      "Name": "mila",
+      "Role": 2
+    },
+    {
+      "Name": "vlad",
+      "Role": 1
+    },
+    {
+      "Name": "lena",
+      "Role": 1
+    },
+    {
+      "Name": "mark",
+      "Role": 0
+    }
+  ]
+}

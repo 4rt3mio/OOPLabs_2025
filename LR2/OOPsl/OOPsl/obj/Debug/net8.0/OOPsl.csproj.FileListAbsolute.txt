@@ -13,3 +13,6 @@ D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\refint\OOPsl.dll
 D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.pdb
 D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.genruntimeconfig.cache
 D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\ref\OOPsl.dll
+D:\OOP\LR2\OOPsl\OOPsl\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.csproj.AssemblyReference.cache
+D:\OOP\LR2\OOPsl\OOPsl\obj\Debug\net8.0\OOPsl.csproj.Up2Date

@@ -1,4 +1,6 @@
-﻿namespace OOPsl
+﻿using OOPsl.DocumentFunctions;
+
+namespace OOPsl.DocumentFunctions.Storage
 {
     public interface IStorageStrategy
     {

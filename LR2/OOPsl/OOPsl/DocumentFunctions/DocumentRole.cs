@@ -1,4 +1,4 @@
-﻿namespace OOPsl
+﻿namespace OOPsl.DocumentFunctions
 {
     public enum DocumentRole
     {

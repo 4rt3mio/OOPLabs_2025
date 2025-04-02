@@ -1,67 +1,134 @@
-﻿namespace OOPsl.DocumentFunctions.Managers
+﻿using OOPsl.DocumentFunctions.Formats;
+using OOPsl.DocumentFunctions.Storage;
+using OOPsl.UserFunctions;
+
+namespace OOPsl.DocumentFunctions.Managers
 {
     public class DocumentManager
     {
-        // Словарь, где ключ – идентификатор стратегии хранения (например, "local", "cloud"),
-        // а значение – конкретная реализация IStorageStrategy.
-        private Dictionary<string, IStorageStrategy> storageStrategies = new Dictionary<string, IStorageStrategy>();
         private List<Document> documents = new List<Document>();
         private DocumentAccessManager accessManager;
+        // Абсолютный путь к локальному хранилищу документов
+        private string documentsFolder = @"D:\OOP\LR2\OOPsl\OOPsl\Files\LocalFiles";
 
         public DocumentManager(DocumentAccessManager accessManager)
         {
             this.accessManager = accessManager;
-            // Инициализируем предустановленные стратегии хранения.
-            storageStrategies["local"] = new LocalFileStorage();
-            storageStrategies["cloud"] = new CloudStorage();
+            if (!Directory.Exists(documentsFolder))
+            {
+                Directory.CreateDirectory(documentsFolder);
+            }
+            LoadDocumentsFromStorage(documentsFolder);
         }
 
-        // Создание нового документа. При создании документ добавляется в общий список,
-        // и через DocumentAccessManager создателю присваивается роль Admin.
-        public void CreateDocument(Document document, User creator)
+        // Создание нового документа.
+        // allUsers – список всех пользователей, для установки доступа.
+        public void CreateDocument(Document document, User creator, List<User> allUsers)
         {
             document.Create();
             documents.Add(document);
-            accessManager.AddDocument(document, creator);
+            accessManager.AddDefaultAccess(document, creator, allUsers);
             creator.OwnedDocuments.Add(document);
+
+            // Сохраняем документ локально
+            IStorageStrategy localStorage = new Storage.LocalFileStorage();
+            localStorage.Save(document);
         }
 
-        // Сохранение документа по выбранной стратегии (например, "local" или "cloud").
-        public void SaveDocument(Document document, string storageType)
+        // Сохранение новой версии документа.
+        public void SaveDocument(Document document, IStorageStrategy storageStrategy)
         {
-            if (storageStrategies.ContainsKey(storageType))
-            {
-                storageStrategies[storageType].Save(document);
-            }
-            else
-            {
-                throw new ArgumentException($"Стратегия хранения '{storageType}' не найдена.");
-            }
+            int version = document.VersionHistory.Count + 1;
+            string baseName = Path.GetFileNameWithoutExtension(document.FileName);
+            string ext = Path.GetExtension(document.FileName);
+            string newFileName = $"{baseName}_v{version}{ext}";
+            string fullPath = Path.Combine(documentsFolder, newFileName);
+            document.FileName = fullPath;
+            document.VersionHistory.Add(fullPath);
+            storageStrategy.Save(document);
         }
 
-        // Загрузка документа из выбранного хранилища.
-        public Document LoadDocument(string fileName, string storageType)
+        public Document LoadDocument(string fileName)
         {
-            if (storageStrategies.ContainsKey(storageType))
-            {
-                return storageStrategies[storageType].Load(fileName);
-            }
-            else
-            {
-                throw new ArgumentException($"Стратегия хранения '{storageType}' не найдена.");
-            }
+            return documents.Find(d => d.FileName.Equals(fileName, StringComparison.OrdinalIgnoreCase));
         }
 
-        // Получение списка всех документов.
         public List<Document> GetAllDocuments()
         {
             return documents;
         }
 
-        // Возможность динамически добавить новую стратегию хранения.
-        public void AddStorageStrategy(string key, IStorageStrategy strategy)
+        public void RemoveDocument(Document document)
         {
-            storageStrategies[key] = strategy;
+            documents.Remove(document);
+            if (File.Exists(document.FileName))
+            {
+                File.Delete(document.FileName);
+            }
+        }
+
+        // Метод загрузки всех документов из указанной папки
+        private void LoadDocumentsFromStorage(string folderPath)
+        {
+            string[] files = Directory.GetFiles(folderPath);
+            // Группируем файлы по базовому имени (без версии) и расширению
+            var groups = files.GroupBy(f => GetBaseName(f)).ToList();
+
+            foreach (var group in groups)
+            {
+                var sortedFiles = group.OrderBy(f => GetVersionNumber(f)).ToList();
+                string latestFile = sortedFiles.Last();
+                string ext = Path.GetExtension(latestFile).ToLower();
+                Document doc = null;
+                if (ext == ".txt")
+                {
+                    doc = new PlainTextDocument(latestFile);
+                }
+                else if (ext == ".md")
+                {
+                    doc = new MarkdownDocument(latestFile);
+                }
+                else if (ext == ".rtf")
+                {
+                    // Предполагается, что у вас есть класс RichTextDocument
+                    doc = new RichTextDocument(latestFile);
+                }
+                if (doc != null)
+                {
+                    try
+                    {
+                        doc.Content = File.ReadAllText(latestFile);
+                        doc.VersionHistory = sortedFiles.ToList();
+                        documents.Add(doc);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка загрузки файла {latestFile}: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        private string GetBaseName(string filePath)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(filePath);
+            int index = fileName.LastIndexOf("_v");
+            if (index > 0)
+            {
+                return fileName.Substring(0, index);
+            }
+            return fileName;
+        }
+
+        private int GetVersionNumber(string filePath)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(filePath);
+            int index = fileName.LastIndexOf("_v");
+            if (index > 0 && int.TryParse(fileName.Substring(index + 2), out int version))
+            {
+                return version;
+            }
+            return 1;
         }
     }
 }

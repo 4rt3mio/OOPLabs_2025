@@ -1,12 +1,11 @@
-﻿using OOPsl.DocumentFunctions.Managers;
+﻿using OOPsl.DocumentFunctions;
+using OOPsl.DocumentFunctions.Managers;
 
-namespace OOPsl
+namespace OOPsl.UserFunctions
 {
-    // Абстрактный класс пользователя
     public abstract class User : IObserver
     {
         public string Name { get; set; }
-        // Списки документов, которыми пользователь владеет или имеет права на редактирование.
         public List<Document> OwnedDocuments { get; set; } = new List<Document>();
         public List<Document> EditableDocuments { get; set; } = new List<Document>();
 
@@ -15,7 +14,6 @@ namespace OOPsl
             Name = name;
         }
 
-        // Возможность создания нового документа.
         public abstract Document CreateDocument(string fileName, string initialContent);
 
         // Возможность удаления документа, которым пользователь владеет.

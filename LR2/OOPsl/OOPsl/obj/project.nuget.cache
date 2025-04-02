@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Y0sAsIT3s8M=",
+  "dgSpecHash": "43/bamd5nvM=",
   "success": true,
   "projectFilePath": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\OOPsl.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\RedmiBook\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

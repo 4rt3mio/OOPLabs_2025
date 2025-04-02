@@ -1,8 +1,9 @@
-﻿using OOPsl.DocumentFunctions.Formats;
+﻿using OOPsl.DocumentFunctions;
+using OOPsl.DocumentFunctions.Formats;
 using OOPsl.DocumentFunctions.Managers;
 using System.Text.Json.Serialization;
 
-namespace OOPsl
+namespace OOPsl.UserFunctions
 {
     public class RegularUser : User
     {
@@ -11,7 +12,7 @@ namespace OOPsl
         public override Document CreateDocument(string fileName, string initialContent)
         {
             // Здесь можно добавить логику выбора типа документа.
-            return new MarkdownDocument { FileName = fileName, Content = initialContent };
+            return new MarkdownDocument(fileName);
         }
 
         public override void DeleteDocument(Document document, DocumentManager documentManager)
