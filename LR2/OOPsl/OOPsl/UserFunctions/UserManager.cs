@@ -44,7 +44,6 @@ namespace OOPsl.UserFunctions
                 {
                     Directory.CreateDirectory(dir);
                 }
-                // Сохраняем типы пользователей с помощью TypeNameHandling
                 string json = JsonConvert.SerializeObject(users, Newtonsoft.Json.Formatting.Indented,
                     new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
                 File.WriteAllText(UsersFile, json);

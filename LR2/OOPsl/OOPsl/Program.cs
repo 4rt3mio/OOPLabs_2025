@@ -7,6 +7,7 @@ using OOPsl.MenuFunctions;
 using OOPsl.DocumentFunctions.Managers;
 using OOPsl.UserFunctions;
 
+ConsoleHelper.DisableQuickEditMode();
 UserManager userManager = new UserManager(); 
 DocumentAccessManager accessManager = new DocumentAccessManager(); 
 DocumentManager documentManager = new DocumentManager(accessManager);

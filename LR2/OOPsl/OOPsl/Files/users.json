@@ -24,6 +24,34 @@
             "CommandManager": {
               "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
             }
+          },
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\rt.txt",
+            "Content": "pdk \nsr 43 \nas\nsdjfj oje roi jteo tj4o5j t4oi5t j4o5 t45o tt45jo t54\ns er t5t 45t 45 t",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\rt.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
+          },
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\rt.txt",
+            "Content": "pdk \nsr 43 \nas\nsdjfj oje roi jteot4oi5t j4o5 t45o tt45jo t54\ns er t5t 45t 45 tage t3t 34twerr 3",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\rt.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
           }
         ]
       }
@@ -47,12 +75,82 @@
             "CommandManager": {
               "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
             }
+          },
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\rt.txt",
+            "Content": "pdk \nsr 43 \nas\nsdjfj oje roi jteo tj4o5j t4oi5t j4o5 t45o tt45jo t54\ns er t5t 45t 45 t",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\rt.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
+          },
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\rt.txt",
+            "Content": "pdk \nsr 43 \nas\nsdjfj oje roi jteot4oi5t j4o5 t45o tt45jo t54\ns er t5t 45t 45 tage t3t 34twerr 3",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\rt.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
+          },
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\pop.txt",
+            "Content": "",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\pop.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
           }
         ]
       },
       "EditableDocuments": {
         "$type": "System.Collections.Generic.List`1[[OOPsl.DocumentFunctions.Document, OOPsl]], System.Private.CoreLib",
         "$values": [
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt",
+            "Content": "p\np\npp\np\np\np\npppp\np\np\npp\np\noooooo",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
+          },
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt",
+            "Content": "p\np\npp\np\np\np\npppp\np\np\npp\np\noooooo",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
+          },
           {
             "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
             "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt",
@@ -89,6 +187,34 @@
             "CommandManager": {
               "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
             }
+          },
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt",
+            "Content": "p\np\npp\np\np\np\npppp\np\np\npp\np\noooooo",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
+          },
+          {
+            "$type": "OOPsl.DocumentFunctions.Formats.PlainTextDocument, OOPsl",
+            "FileName": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt",
+            "Content": "p\np\npp\np\np\np\npppp\np\np\npp\np\noooooo",
+            "VersionHistory": {
+              "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+              "$values": [
+                "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles\\gucci.txt"
+              ]
+            },
+            "CommandManager": {
+              "$type": "OOPsl.DocumentFunctions.Commands.CommandManager, OOPsl"
+            }
           }
         ]
       },
@@ -100,6 +226,30 @@
     {
       "$type": "OOPsl.UserFunctions.RegularUser, OOPsl",
       "Name": "mila",
+      "OwnedDocuments": {
+        "$type": "System.Collections.Generic.List`1[[OOPsl.DocumentFunctions.Document, OOPsl]], System.Private.CoreLib",
+        "$values": []
+      },
+      "EditableDocuments": {
+        "$type": "System.Collections.Generic.List`1[[OOPsl.DocumentFunctions.Document, OOPsl]], System.Private.CoreLib",
+        "$values": []
+      }
+    },
+    {
+      "$type": "OOPsl.UserFunctions.RegularUser, OOPsl",
+      "Name": "leha",
+      "OwnedDocuments": {
+        "$type": "System.Collections.Generic.List`1[[OOPsl.DocumentFunctions.Document, OOPsl]], System.Private.CoreLib",
+        "$values": []
+      },
+      "EditableDocuments": {
+        "$type": "System.Collections.Generic.List`1[[OOPsl.DocumentFunctions.Document, OOPsl]], System.Private.CoreLib",
+        "$values": []
+      }
+    },
+    {
+      "$type": "OOPsl.UserFunctions.RegularUser, OOPsl",
+      "Name": "jora",
       "OwnedDocuments": {
         "$type": "System.Collections.Generic.List`1[[OOPsl.DocumentFunctions.Document, OOPsl]], System.Private.CoreLib",
         "$values": []
