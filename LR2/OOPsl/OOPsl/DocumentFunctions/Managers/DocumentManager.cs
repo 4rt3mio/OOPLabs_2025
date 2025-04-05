@@ -1,6 +1,7 @@
 ﻿using OOPsl.DocumentFunctions.Formats;
 using OOPsl.DocumentFunctions.Storage;
 using OOPsl.UserFunctions;
+using System.Reflection.Metadata;
 
 namespace OOPsl.DocumentFunctions.Managers
 {
@@ -8,7 +9,6 @@ namespace OOPsl.DocumentFunctions.Managers
     {
         private List<Document> documents = new List<Document>();
         private DocumentAccessManager accessManager;
-        // Абсолютный путь к локальному хранилищу документов
         private string documentsFolder = @"D:\OOP\LR2\OOPsl\OOPsl\Files\LocalFiles";
 
         public DocumentManager(DocumentAccessManager accessManager)
@@ -21,8 +21,6 @@ namespace OOPsl.DocumentFunctions.Managers
             LoadDocumentsFromStorage(documentsFolder);
         }
 
-        // Создание нового документа.
-        // allUsers – список всех пользователей, для установки доступа.
         public void CreateDocument(Document document, User creator, List<User> allUsers)
         {
             document.Create();
@@ -30,12 +28,10 @@ namespace OOPsl.DocumentFunctions.Managers
             accessManager.AddDefaultAccess(document, creator, allUsers);
             creator.OwnedDocuments.Add(document);
 
-            // Сохраняем документ локально
             IStorageStrategy localStorage = new Storage.LocalFileStorage();
             localStorage.Save(document);
         }
 
-        // Сохранение новой версии документа.
         public void SaveDocument(Document document, IStorageStrategy storageStrategy)
         {
             int version = document.VersionHistory.Count + 1;

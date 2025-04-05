@@ -2,6 +2,8 @@
 using OOPsl.UserFunctions;
 using OOPsl.DocumentFunctions;
 using OOPsl.DocumentFunctions.Formats;
+using System.Reflection.Metadata;
+using Document = OOPsl.DocumentFunctions.Document;
 
 namespace OOPsl.MenuFunctions
 {
@@ -32,8 +34,9 @@ namespace OOPsl.MenuFunctions
                 Console.WriteLine("3. Открыть файл");
                 Console.WriteLine("4. Удалить файл");
                 Console.WriteLine("5. Изменить роли для файла");
-                Console.WriteLine("6. Вернуться к выбору пользователя");
-                Console.WriteLine("7. Выход из приложения");
+                Console.WriteLine("6. Показать уведомления");
+                Console.WriteLine("7. Вернуться к выбору пользователя");
+                Console.WriteLine("8. Выход из приложения");
                 Console.Write("Выберите действие: ");
                 string choice = Console.ReadLine();
 
@@ -55,9 +58,12 @@ namespace OOPsl.MenuFunctions
                         ChangeRolesForFile();
                         break;
                     case "6":
-                        exitMenu = true;
+                        ShowNotifications();
                         break;
                     case "7":
+                        exitMenu = true;
+                        break;
+                    case "8":
                         Environment.Exit(0);
                         break;
                     default:
@@ -65,6 +71,7 @@ namespace OOPsl.MenuFunctions
                         Console.ReadKey();
                         break;
                 }
+
             }
         }
 
@@ -104,8 +111,11 @@ namespace OOPsl.MenuFunctions
                     break;
             }
 
-            // При создании файла передаем список всех пользователей для установки доступа.
             documentManager.CreateDocument(newDoc, currentUser, userManager.GetUsers());
+            foreach (var user in userManager.GetUsers()) 
+            {
+                newDoc.Attach(user);
+            }
             Console.WriteLine($"Документ \"{fileName}\" успешно создан.");
             Console.WriteLine("Нажмите любую клавишу для продолжения...");
             Console.ReadKey();
@@ -304,6 +314,28 @@ namespace OOPsl.MenuFunctions
                     }
                 }
             }
+            Console.WriteLine("Нажмите любую клавишу для продолжения...");
+            Console.ReadKey();
+        }
+
+        private void ShowNotifications()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Уведомления пользователя ===");
+
+            if (currentUser.Notifications.Count == 0)
+            {
+                Console.WriteLine("У вас нет новых уведомлений.");
+            }
+            else
+            {
+                int count = 1;
+                foreach (var notification in currentUser.Notifications)
+                {
+                    Console.WriteLine($"{count++}. {notification}");
+                }
+            }
+
             Console.WriteLine("Нажмите любую клавишу для продолжения...");
             Console.ReadKey();
         }

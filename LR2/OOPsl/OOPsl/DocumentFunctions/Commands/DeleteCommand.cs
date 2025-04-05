@@ -5,7 +5,6 @@
         private int index;
         private int length;
         private string currentText;
-        private string deletedText;
         public string UpdatedText { get; private set; }
         public DeleteCommand(int index, int length, string currentText)
         {
@@ -15,12 +14,11 @@
         }
         public void Execute()
         {
-            deletedText = currentText.Substring(index, length);
             UpdatedText = currentText.Remove(index, length);
         }
         public void UnExecute()
         {
-            UpdatedText = currentText.Insert(index, deletedText);
+            UpdatedText = currentText;
         }
     }
 }

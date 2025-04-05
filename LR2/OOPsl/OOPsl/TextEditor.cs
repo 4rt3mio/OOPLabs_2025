@@ -31,11 +31,10 @@ namespace OOPsl
             this.document = document;
             text = File.Exists(document.FileName) ? File.ReadAllText(document.FileName) : "";
             cursorIndex = text.Length;
-            Console.TreatControlCAsInput = true;
             inputTimer.Start();
         }
 
-        private void UpdateScreen()
+        private void UpdateScreen(string searchQuery = "")
         {
             Console.Clear();
             string[] lines = text.Split('\n');
@@ -47,12 +46,40 @@ namespace OOPsl
                 selEnd = Math.Max(selectionAnchor.Value, cursorIndex);
             }
 
+            var searchRanges = new System.Collections.Generic.List<(int start, int end)>();
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                int pos = 0;
+                while (pos < text.Length)
+                {
+                    int found = text.IndexOf(searchQuery, pos, StringComparison.OrdinalIgnoreCase);
+                    if (found < 0) break;
+                    searchRanges.Add((found, found + searchQuery.Length));
+                    pos = found + searchQuery.Length;
+                }
+            }
+
             int globalIndex = 0;
             for (int i = 0; i < lines.Length; i++)
             {
                 for (int j = 0; j < lines[i].Length; j++)
                 {
-                    if (hasSelection && globalIndex >= selStart && globalIndex < selEnd)
+                    bool inSelection = hasSelection && globalIndex >= selStart && globalIndex < selEnd;
+                    bool inSearch = false;
+                    foreach (var range in searchRanges)
+                    {
+                        if (globalIndex >= range.start && globalIndex < range.end)
+                        {
+                            inSearch = true;
+                            break;
+                        }
+                    }
+                    if (inSearch)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Yellow;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                    }
+                    else if (inSelection)
                     {
                         Console.BackgroundColor = ConsoleColor.DarkCyan;
                         Console.ForegroundColor = ConsoleColor.White;
@@ -66,13 +93,11 @@ namespace OOPsl
                 }
                 Console.ResetColor();
                 Console.WriteLine();
-                globalIndex++;
+                globalIndex++; 
             }
             Console.ResetColor();
             while (Console.KeyAvailable)
-            {
                 Console.ReadKey(true);
-            }
             var (row, col) = GetCursorCoordinates(cursorIndex);
             Console.SetCursorPosition(col, row);
         }
@@ -137,6 +162,21 @@ namespace OOPsl
             }
         }
 
+        private void SearchAndHighlight()
+        {
+            Console.Clear();
+            Console.ResetColor();
+            Console.Write("Введите текст для поиска: ");
+            string query = Console.ReadLine();
+            if (string.IsNullOrEmpty(query))
+                return;
+            UpdateScreen(query);
+            Console.Beep();
+            Console.WriteLine("\nНажмите любую клавишу для отмены поиска...");
+            Console.ReadKey(true);
+            UpdateScreen();
+        }
+
         public void EditText()
         {
             UpdateScreen();
@@ -161,13 +201,37 @@ namespace OOPsl
                     selectionAnchor = null;
                 }
 
+                if (key.Modifiers.HasFlag(ConsoleModifiers.Control) && key.Key == ConsoleKey.F)
+                {
+                    Console.TreatControlCAsInput = false;
+                    SearchAndHighlight();
+                    Console.TreatControlCAsInput = true;
+                    continue;
+                }
                 if (key.Modifiers.HasFlag(ConsoleModifiers.Control) && key.Key == ConsoleKey.A)
                 {
                     selectionAnchor = 0;
                     cursorIndex = text.Length;
                     continue;
                 }
-
+                else if (key.Modifiers.HasFlag(ConsoleModifiers.Control) && key.Key == ConsoleKey.Z)
+                {
+                    string newState = document.CommandManager.Undo();
+                    if (newState != null)
+                        text = newState;
+                    if (cursorIndex > text.Length)
+                        cursorIndex = text.Length;
+                    continue;
+                }
+                else if (key.Modifiers.HasFlag(ConsoleModifiers.Control) && key.Key == ConsoleKey.X)
+                {
+                    string newState = document.CommandManager.Redo();
+                    if (newState != null)
+                        text = newState;
+                    if (cursorIndex > text.Length)
+                        cursorIndex = text.Length;
+                    continue;
+                }
                 else if (key.Modifiers.HasFlag(ConsoleModifiers.Control) && key.Key == ConsoleKey.C)
                 {
                     string sel = CurrentSelection;
@@ -320,6 +384,7 @@ namespace OOPsl
                 return;
             }
             storageStrategy.Save(document);
+            document.Notify();
             Console.WriteLine("Файл сохранён. Нажмите любую клавишу для возврата...");
             Console.ReadKey();
         }

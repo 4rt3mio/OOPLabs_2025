@@ -4,5 +4,6 @@
     {
         void Execute();
         void UnExecute();
+        string UpdatedText { get; }
     }
 }

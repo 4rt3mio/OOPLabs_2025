@@ -9,6 +9,8 @@ namespace OOPsl.UserFunctions
         public List<Document> OwnedDocuments { get; set; } = new List<Document>();
         public List<Document> EditableDocuments { get; set; } = new List<Document>();
 
+        public List<string> Notifications { get; private set; } = new List<string>();
+
         public User(string name)
         {
             Name = name;
@@ -22,6 +24,9 @@ namespace OOPsl.UserFunctions
 
         public abstract void OpenDocument(Document document);
 
-        public void Update(Document document) { }
+        public virtual void Update(Document document)
+        {
+            Notifications.Add($"Документ \"{document.FileName}\" был обнавлён.");
+        }
     }
 }

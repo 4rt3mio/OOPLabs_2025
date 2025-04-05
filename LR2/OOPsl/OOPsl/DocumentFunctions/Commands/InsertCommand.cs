@@ -18,7 +18,7 @@
         }
         public void UnExecute()
         {
-            UpdatedText = currentText.Remove(index, insertedText.Length);
+            UpdatedText = currentText;
         }
     }
 }

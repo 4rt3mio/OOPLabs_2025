@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using OOPsl.UserFunctions;
+using System.Reflection.Metadata;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace OOPsl.DocumentFunctions.Managers
 {
@@ -167,6 +169,13 @@ namespace OOPsl.DocumentFunctions.Managers
                                 realUser.EditableDocuments.Add(doc);
                         }
                     }
+                }
+            }
+            foreach (var document in documentManager.GetAllDocuments())
+            {
+                foreach (var user in userManager.GetUsers())
+                {
+                    document.Attach(user);
                 }
             }
         }

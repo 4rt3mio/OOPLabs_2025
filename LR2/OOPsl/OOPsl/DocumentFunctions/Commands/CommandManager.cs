@@ -1,4 +1,6 @@
-﻿namespace OOPsl.DocumentFunctions.Commands
+﻿using System.Collections.Generic;
+
+namespace OOPsl.DocumentFunctions.Commands
 {
     public class CommandManager
     {
@@ -9,9 +11,37 @@
         {
             command.Execute();
             executedCommands.Push(command);
+            undoneCommands.Clear();
         }
 
-        public void Undo() { }
-        public void Redo() { }
+        public string Undo()
+        {
+            if (executedCommands.Count > 0)
+            {
+                ICommand command = executedCommands.Pop();
+                command.UnExecute();
+                undoneCommands.Push(command);
+                return command.UpdatedText;
+            }
+            return null;
+        }
+
+        public string Redo()
+        {
+            if (undoneCommands.Count > 0)
+            {
+                ICommand command = undoneCommands.Pop();
+                command.Execute();
+                executedCommands.Push(command);
+                return command.UpdatedText;
+            }
+            return null;
+        }
+
+        public void ClearHistory()
+        {
+            executedCommands.Clear();
+            undoneCommands.Clear();
+        }
     }
 }

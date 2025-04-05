@@ -120,5 +120,31 @@
       "Name": "leha",
       "Role": 0
     }
+  ],
+  "ggg": [
+    {
+      "Name": "vlad",
+      "Role": 2
+    },
+    {
+      "Name": "lena",
+      "Role": 0
+    },
+    {
+      "Name": "mark",
+      "Role": 0
+    },
+    {
+      "Name": "mila",
+      "Role": 0
+    },
+    {
+      "Name": "leha",
+      "Role": 0
+    },
+    {
+      "Name": "jora",
+      "Role": 0
+    }
   ]
 }

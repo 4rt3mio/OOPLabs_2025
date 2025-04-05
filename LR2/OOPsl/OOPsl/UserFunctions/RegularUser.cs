@@ -35,5 +35,14 @@ namespace OOPsl.UserFunctions
         {
             document.Open();
         }
+
+        public void ShowNotifications()
+        {
+            Console.WriteLine($"Уведомления для {Name}:");
+            foreach (var note in Notifications)
+            {
+                Console.WriteLine($"- {note}");
+            }
+        }
     }
 }
