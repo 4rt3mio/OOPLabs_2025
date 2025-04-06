@@ -19,6 +19,7 @@ namespace OOPsl.DocumentFunctions.Managers
                 Directory.CreateDirectory(documentsFolder);
             }
             LoadDocumentsFromStorage(documentsFolder);
+            LoadDocumentsFromCloud();
         }
 
         public void CreateDocument(Document document, User creator, List<User> allUsers)
@@ -28,7 +29,7 @@ namespace OOPsl.DocumentFunctions.Managers
             accessManager.AddDefaultAccess(document, creator, allUsers);
             creator.OwnedDocuments.Add(document);
 
-            IStorageStrategy localStorage = new Storage.LocalFileStorage();
+            IStorageStrategy localStorage = new LocalFileStorage();
             localStorage.Save(document);
         }
 
@@ -54,6 +55,16 @@ namespace OOPsl.DocumentFunctions.Managers
             return documents;
         }
 
+        public List<Document> GetLocalDocuments()
+        {
+            return documents.Where(d => d.FileName.StartsWith(documentsFolder, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        public List<Document> GetCloudDocuments()
+        {
+            return documents.Where(d => !d.FileName.StartsWith(documentsFolder, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
         public void RemoveDocument(Document document)
         {
             documents.Remove(document);
@@ -62,12 +73,9 @@ namespace OOPsl.DocumentFunctions.Managers
                 File.Delete(document.FileName);
             }
         }
-
-        // Метод загрузки всех документов из указанной папки
         private void LoadDocumentsFromStorage(string folderPath)
         {
             string[] files = Directory.GetFiles(folderPath);
-            // Группируем файлы по базовому имени (без версии) и расширению
             var groups = files.GroupBy(f => GetBaseName(f)).ToList();
 
             foreach (var group in groups)
@@ -86,7 +94,6 @@ namespace OOPsl.DocumentFunctions.Managers
                 }
                 else if (ext == ".rtf")
                 {
-                    // Предполагается, что у вас есть класс RichTextDocument
                     doc = new RichTextDocument(latestFile);
                 }
                 if (doc != null)
@@ -102,6 +109,23 @@ namespace OOPsl.DocumentFunctions.Managers
                         Console.WriteLine($"Ошибка загрузки файла {latestFile}: {ex.Message}");
                     }
                 }
+            }
+        }
+
+        private void LoadDocumentsFromCloud()
+        {
+            try
+            {
+                GoogleDriveStorage driveStorage = new GoogleDriveStorage();
+                var driveDocs = driveStorage.GetAllDocumentsFromDrive();
+                if (driveDocs != null && driveDocs.Count > 0)
+                {
+                    documents.AddRange(driveDocs);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка загрузки файлов из облака: " + ex.Message);
             }
         }
 

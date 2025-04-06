@@ -23,7 +23,8 @@ namespace OOPsl.MenuFunctions
             Console.WriteLine("1. Показать текущих пользователей");
             Console.WriteLine("2. Создать нового пользователя");
             Console.WriteLine("3. Выбрать пользователя");
-            Console.WriteLine("4. Выход");
+            Console.WriteLine("4. Изменить настройки редактора");
+            Console.WriteLine("5. Выход");
             Console.Write("Выберите пункт: ");
             if (int.TryParse(Console.ReadLine(), out int option))
             {
@@ -101,5 +102,47 @@ namespace OOPsl.MenuFunctions
                 Console.ReadKey();
             }
         }
+        public void ChangeSettings()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Изменение настроек редактора ===");
+            Console.WriteLine($"Текущая тема: {EditorSettings.Instance.Theme}");
+            Console.WriteLine($"Текущий размер шрифта: {EditorSettings.Instance.FontSize}");
+            Console.WriteLine();
+
+            Console.Write("Введите новую тему (Dark/Light): ");
+            string newTheme = Console.ReadLine();
+            if (!string.IsNullOrEmpty(newTheme))
+            {
+                EditorSettings.Instance.Theme = newTheme;
+                if (newTheme.Equals("Light", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                Console.Clear();
+            }
+
+            Console.Write("Введите новый размер шрифта (целое число): ");
+            string fontSizeInput = Console.ReadLine();
+            if (int.TryParse(fontSizeInput, out int newFontSize))
+            {
+                EditorSettings.Instance.FontSize = newFontSize;
+                EditorSettings.Instance.ApplyFontSettings();
+            }
+            else
+            {
+                Console.WriteLine("Некорректное значение размера шрифта.");
+            }
+
+            Console.WriteLine("Настройки сохранены. Нажмите любую клавишу для возврата...");
+            Console.ReadKey();
+        }
+
     }
 }

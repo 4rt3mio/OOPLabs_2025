@@ -4,6 +4,7 @@ using OOPsl.DocumentFunctions;
 using OOPsl.DocumentFunctions.Formats;
 using System.Reflection.Metadata;
 using Document = OOPsl.DocumentFunctions.Document;
+using OOPsl.DocumentFunctions.Storage;
 
 namespace OOPsl.MenuFunctions
 {
@@ -124,43 +125,80 @@ namespace OOPsl.MenuFunctions
         private void ShowAllFiles()
         {
             Console.Clear();
-            var docs = documentManager.GetAllDocuments();
-            if (docs.Count == 0)
+            var localDocs = documentManager.GetLocalDocuments();
+            var cloudDocs = documentManager.GetCloudDocuments();
+
+            Console.WriteLine("=== Локальные документы ===");
+            if (localDocs.Count == 0)
             {
-                Console.WriteLine("Нет созданных документов.");
+                Console.WriteLine("Нет локальных документов.");
             }
             else
             {
-                Console.WriteLine("=== Список документов и роли пользователей ===");
-                foreach (var doc in docs)
+                foreach (var doc in localDocs)
                 {
                     Console.WriteLine($"Файл: {doc.FileName}");
                     var accessList = accessManager.GetAccessList(doc);
                     if (accessList.Count == 0)
-                    {
                         Console.WriteLine("  Роли не назначены.");
-                    }
                     else
                     {
                         foreach (var ace in accessList)
-                        {
                             Console.WriteLine($"  Пользователь: {ace.User.Name}, Роль: {ace.Role}");
-                        }
                     }
                 }
             }
-            Console.WriteLine("Нажмите любую клавишу для продолжения...");
+            Console.WriteLine("\n=== Документы с Google Drive ===");
+            if (cloudDocs.Count == 0)
+            {
+                Console.WriteLine("Нет документов из облака.");
+            }
+            else
+            {
+                foreach (var doc in cloudDocs)
+                {
+                    Console.WriteLine($"Файл: {doc.FileName}");
+                    var accessList = accessManager.GetAccessList(doc);
+                    if (accessList.Count == 0)
+                        Console.WriteLine("  Роли не назначены.");
+                    else
+                    {
+                        foreach (var ace in accessList)
+                            Console.WriteLine($"  Пользователь: {ace.User.Name}, Роль: {ace.Role}");
+                    }
+                }
+            }
+            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
             Console.ReadKey();
         }
 
         private void OpenFile()
         {
             Console.Clear();
+            Console.WriteLine("Выберите источник файла:");
+            Console.WriteLine("1. Локальные файлы");
+            Console.WriteLine("2. Google Drive");
+            Console.Write("Ваш выбор: ");
+            string sourceChoice = Console.ReadLine();
+
+            List<Document> docs;
+            if (sourceChoice == "1")
+            {
+                docs = documentManager.GetLocalDocuments();
+            }
+            else if (sourceChoice == "2")
+            {
+                docs = new GoogleDriveStorage().GetAllDocumentsFromDrive();
+            }
+            else
+            {
+                Console.WriteLine("Неверный выбор.");
+                Console.ReadKey();
+                return;
+            }
+
             Console.Write("Введите имя файла для открытия: ");
             string inputName = Console.ReadLine();
-
-            var docs = documentManager.GetAllDocuments();
-            // Ищем документ, сравнивая абсолютное имя или базовое имя файла
             Document docToOpen = docs.FirstOrDefault(d =>
                 d.FileName.Equals(inputName, StringComparison.OrdinalIgnoreCase) ||
                 System.IO.Path.GetFileName(d.FileName).Equals(inputName, StringComparison.OrdinalIgnoreCase));
@@ -173,7 +211,6 @@ namespace OOPsl.MenuFunctions
                 return;
             }
 
-            // Проверяем права текущего пользователя для данного документа
             var accessList = accessManager.GetAccessList(docToOpen);
             var currentUserAccess = accessList.FirstOrDefault(a =>
                 a.User.Name.Equals(currentUser.Name, StringComparison.OrdinalIgnoreCase));
@@ -190,7 +227,7 @@ namespace OOPsl.MenuFunctions
             {
                 Console.WriteLine("Открывается режим редактирования. Нажмите Escape для выхода из редактора.");
                 TextEditor editor = new TextEditor(docToOpen);
-                editor.Run(); // Внутри TextEditor реализована обработка Escape для выхода из редактора
+                editor.Run();
                 Console.WriteLine("Вы вышли из режима редактирования.");
                 Console.WriteLine("Нажмите любую клавишу для возврата...");
                 Console.ReadKey();
@@ -216,11 +253,24 @@ namespace OOPsl.MenuFunctions
         private void DeleteFile()
         {
             Console.Clear();
+            Console.WriteLine("Выберите источник файла для удаления:");
+            Console.WriteLine("1. Локальные документы");
+            Console.WriteLine("2. Документы с Google Drive");
+            string sourceChoice = Console.ReadLine();
+            List<Document> docs;
+            if (sourceChoice == "1")
+                docs = documentManager.GetLocalDocuments();
+            else if (sourceChoice == "2")
+                docs = documentManager.GetCloudDocuments();
+            else
+            {
+                Console.WriteLine("Неверный выбор.");
+                Console.ReadKey();
+                return;
+            }
+
             Console.Write("Введите имя файла для удаления: ");
             string inputName = Console.ReadLine();
-
-            var docs = documentManager.GetAllDocuments();
-            // Ищем документ по абсолютному или базовому имени
             Document docToDelete = docs.FirstOrDefault(d =>
                 d.FileName.Equals(inputName, StringComparison.OrdinalIgnoreCase) ||
                 System.IO.Path.GetFileName(d.FileName).Equals(inputName, StringComparison.OrdinalIgnoreCase));
@@ -232,7 +282,9 @@ namespace OOPsl.MenuFunctions
             else
             {
                 var accessList = accessManager.GetAccessList(docToDelete);
-                bool isAdmin = accessList.Any(ace => ace.User.Name.Equals(currentUser.Name, StringComparison.OrdinalIgnoreCase) && ace.Role == DocumentRole.Admin);
+                bool isAdmin = accessList.Any(ace =>
+                    ace.User.Name.Equals(currentUser.Name, StringComparison.OrdinalIgnoreCase) &&
+                    ace.Role == DocumentRole.Admin);
 
                 if (!isAdmin)
                 {
@@ -253,11 +305,24 @@ namespace OOPsl.MenuFunctions
         private void ChangeRolesForFile()
         {
             Console.Clear();
+            Console.WriteLine("Выберите источник файла для изменения ролей:");
+            Console.WriteLine("1. Локальные документы");
+            Console.WriteLine("2. Документы с Google Drive");
+            string sourceChoice = Console.ReadLine();
+            List<Document> docs;
+            if (sourceChoice == "1")
+                docs = documentManager.GetLocalDocuments();
+            else if (sourceChoice == "2")
+                docs = documentManager.GetCloudDocuments();
+            else
+            {
+                Console.WriteLine("Неверный выбор.");
+                Console.ReadKey();
+                return;
+            }
+
             Console.Write("Введите имя файла для изменения ролей: ");
             string inputName = Console.ReadLine();
-
-            var docs = documentManager.GetAllDocuments();
-            // Ищем документ по абсолютному или базовому имени
             Document docToChange = docs.FirstOrDefault(d =>
                 d.FileName.Equals(inputName, StringComparison.OrdinalIgnoreCase) ||
                 System.IO.Path.GetFileName(d.FileName).Equals(inputName, StringComparison.OrdinalIgnoreCase));
@@ -269,7 +334,9 @@ namespace OOPsl.MenuFunctions
             else
             {
                 var accessList = accessManager.GetAccessList(docToChange);
-                bool isAdmin = accessList.Any(ace => ace.User.Name.Equals(currentUser.Name, StringComparison.OrdinalIgnoreCase) && ace.Role == DocumentRole.Admin);
+                bool isAdmin = accessList.Any(ace =>
+                    ace.User.Name.Equals(currentUser.Name, StringComparison.OrdinalIgnoreCase) &&
+                    ace.Role == DocumentRole.Admin);
 
                 if (!isAdmin)
                 {

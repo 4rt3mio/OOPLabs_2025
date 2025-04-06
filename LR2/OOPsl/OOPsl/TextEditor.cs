@@ -29,13 +29,40 @@ namespace OOPsl
         public TextEditor(Document document)
         {
             this.document = document;
-            text = File.Exists(document.FileName) ? File.ReadAllText(document.FileName) : "";
+            if (File.Exists(document.FileName))
+            {
+                text = File.ReadAllText(document.FileName);
+            }
+            else
+            {
+                IStorageStrategy cloudStorage = new GoogleDriveStorage();
+                Document cloudDoc = cloudStorage.Load(System.IO.Path.GetFileName(document.FileName));
+                if (cloudDoc != null)
+                {
+                    text = cloudDoc.Content;
+                }
+                else
+                {
+                    text = "";
+                }
+            }
             cursorIndex = text.Length;
             inputTimer.Start();
         }
 
         private void UpdateScreen(string searchQuery = "")
         {
+            if (EditorSettings.Instance.Theme == "Light")
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            EditorSettings.Instance.ApplyFontSettings();
             Console.Clear();
             string[] lines = text.Split('\n');
             bool hasSelection = selectionAnchor.HasValue && selectionAnchor.Value != cursorIndex;
@@ -363,8 +390,28 @@ namespace OOPsl
 
             while (Console.KeyAvailable)
                 Console.ReadKey(true);
-
+            if (EditorSettings.Instance.Theme == "Light")
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+            }
             Console.Clear();
+            if (EditorSettings.Instance.Theme == "Light")
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            EditorSettings.Instance.ApplyFontSettings();
             Console.WriteLine("Сохранить файл:");
             Console.WriteLine("1. Локально");
             Console.WriteLine("2. В облако (Google Drive)");
@@ -375,7 +422,7 @@ namespace OOPsl
             if (key.KeyChar == '1')
                 storageStrategy = new LocalFileStorage();
             else if (key.KeyChar == '2')
-                storageStrategy = new CloudStorage();
+                storageStrategy = new GoogleDriveStorage();
             else
             {
                 Console.WriteLine("Неверный выбор. Сохранение отменено.");

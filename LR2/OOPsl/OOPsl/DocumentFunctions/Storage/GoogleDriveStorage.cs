@@ -1,0 +1,150 @@
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v3;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
+using OOPsl.DocumentFunctions.Formats;
+using System.Text;
+
+namespace OOPsl.DocumentFunctions.Storage
+{
+    public class GoogleDriveStorage : IStorageStrategy
+    {
+        private readonly string ApplicationName = "OOPslApp";
+        private DriveService service;
+        private string folderId = "1HTSQ8H6RDn03IAadfpRLCRx7iS0bJNJ-";
+
+        public GoogleDriveStorage()
+        {
+            InitializeService();
+        }
+
+        private void InitializeService()
+        {
+            UserCredential credential;
+            using (var stream = new FileStream(@"D:\OOP\LR2\OOPsl\OOPsl\Files\credentials.json", FileMode.Open, FileAccess.Read))
+            {
+                string credPath = "token.json";
+                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.FromStream(stream).Secrets,
+                    new[] { DriveService.Scope.DriveFile },
+                    "user",
+                    CancellationToken.None,
+                    new FileDataStore(credPath, true)).Result;
+            }
+
+            service = new DriveService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = ApplicationName,
+            });
+        }
+
+        public void Save(Document document)
+        {
+            try
+            {
+                var fileMetadata = new Google.Apis.Drive.v3.Data.File()
+                {
+                    Name = Path.GetFileName(document.FileName),
+                    Parents = new List<string> { folderId }
+                };
+
+                byte[] contentBytes = Encoding.UTF8.GetBytes(document.Content);
+                using (var stream = new MemoryStream(contentBytes))
+                {
+                    var request = service.Files.Create(fileMetadata, stream, "text/plain");
+                    request.Fields = "id";
+                    var uploadResult = request.Upload();
+                    if (uploadResult.Status == Google.Apis.Upload.UploadStatus.Failed)
+                    {
+                        Console.WriteLine("Ошибка при загрузке файла: " + uploadResult.Exception.Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Документ успешно загружен на Google Диск в папку с ID {folderId}. ID файла: {request.ResponseBody.Id}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при сохранении файла на Google Диск: " + ex.Message);
+            }
+        }
+
+        public Document Load(string fileName)
+        {
+            try
+            {
+                var listRequest = service.Files.List();
+                listRequest.Q = $"name = '{fileName}' and '{folderId}' in parents and trashed=false";
+                listRequest.Fields = "files(id, name)";
+                var result = listRequest.Execute();
+                if (result.Files == null || result.Files.Count == 0)
+                {
+                    Console.WriteLine("Файл не найден на Google Диске.");
+                    return null;
+                }
+                var file = result.Files.First();
+                var getRequest = service.Files.Get(file.Id);
+                using (var stream = new MemoryStream())
+                {
+                    getRequest.MediaDownloader.ProgressChanged += progress =>
+                    {
+                        if (progress.Status == Google.Apis.Download.DownloadStatus.Completed)
+                        {
+                            Console.WriteLine("Загрузка файла завершена.");
+                        }
+                        else if (progress.Status == Google.Apis.Download.DownloadStatus.Failed)
+                        {
+                            Console.WriteLine("Ошибка при загрузке файла.");
+                        }
+                    };
+                    getRequest.Download(stream);
+                    stream.Position = 0;
+                    using (var reader = new StreamReader(stream))
+                    {
+                        string content = reader.ReadToEnd();
+                        Document doc = new PlainTextDocument(fileName)
+                        {
+                            Content = content,
+                            FileName = fileName 
+                        };
+                        return doc;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при загрузке файла с Google Диска: " + ex.Message);
+                return null;
+            }
+        }
+        public List<Document> GetAllDocumentsFromDrive()
+        {
+            List<Document> driveDocs = new List<Document>();
+            try
+            {
+                var listRequest = service.Files.List();
+                listRequest.Q = $"'{folderId}' in parents and trashed=false";
+                listRequest.Fields = "files(id, name)";
+                var result = listRequest.Execute();
+                if (result.Files != null && result.Files.Count > 0)
+                {
+                    foreach (var file in result.Files)
+                    {
+                        Document doc = Load(file.Name);
+                        if (doc != null)
+                        {
+                            driveDocs.Add(doc);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при получении списка документов с Google Диска: " + ex.Message);
+            }
+            return driveDocs;
+        }
+    }
+}

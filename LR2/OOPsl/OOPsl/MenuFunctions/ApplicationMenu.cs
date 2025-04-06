@@ -30,6 +30,9 @@ namespace OOPsl.MenuFunctions
                         mainMenu.SelectUser();
                         break;
                     case 4:
+                        mainMenu.ChangeSettings();
+                        break;
+                    case 5:
                         exit = true;
                         break;
                     default:

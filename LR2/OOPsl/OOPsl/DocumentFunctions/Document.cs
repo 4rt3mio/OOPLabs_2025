@@ -8,7 +8,6 @@ namespace OOPsl.DocumentFunctions
         public string FileName { get; set; }
         public string Content { get; set; } = string.Empty;
 
-        // Список версий – каждый элемент содержит полное имя файла версии
         public List<string> VersionHistory { get; set; } = new List<string>();
 
         public CommandManager CommandManager { get; set; } = new CommandManager();

@@ -4,4 +4,5 @@
     void DisplayUsers();
     void CreateUser();
     void SelectUser();
+    void ChangeSettings();
 }
