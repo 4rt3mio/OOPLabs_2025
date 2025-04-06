@@ -35,13 +35,7 @@ namespace OOPsl.DocumentFunctions.Managers
 
         public void SaveDocument(Document document, IStorageStrategy storageStrategy)
         {
-            int version = document.VersionHistory.Count + 1;
-            string baseName = Path.GetFileNameWithoutExtension(document.FileName);
-            string ext = Path.GetExtension(document.FileName);
-            string newFileName = $"{baseName}_v{version}{ext}";
-            string fullPath = Path.Combine(documentsFolder, newFileName);
-            document.FileName = fullPath;
-            document.VersionHistory.Add(fullPath);
+            document.VersionHistory.Add(document.Content);
             storageStrategy.Save(document);
         }
 
@@ -65,49 +59,27 @@ namespace OOPsl.DocumentFunctions.Managers
             return documents.Where(d => !d.FileName.StartsWith(documentsFolder, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
-        public void RemoveDocument(Document document)
+        public void RemoveDocument(Document document, IStorageStrategy storageStrategy)
         {
             documents.Remove(document);
-            if (File.Exists(document.FileName))
-            {
-                File.Delete(document.FileName);
-            }
+            storageStrategy.Delete(document);
         }
+
         private void LoadDocumentsFromStorage(string folderPath)
         {
             string[] files = Directory.GetFiles(folderPath);
-            var groups = files.GroupBy(f => GetBaseName(f)).ToList();
-
-            foreach (var group in groups)
+            foreach (var file in files)
             {
-                var sortedFiles = group.OrderBy(f => GetVersionNumber(f)).ToList();
-                string latestFile = sortedFiles.Last();
-                string ext = Path.GetExtension(latestFile).ToLower();
-                Document doc = null;
-                if (ext == ".txt")
+                try
                 {
-                    doc = new PlainTextDocument(latestFile);
+                    string content = File.ReadAllText(file);
+                    Document doc = new PlainTextDocument(file);
+                    doc.Content = content;
+                    documents.Add(doc);
                 }
-                else if (ext == ".md")
+                catch (Exception ex)
                 {
-                    doc = new MarkdownDocument(latestFile);
-                }
-                else if (ext == ".rtf")
-                {
-                    doc = new RichTextDocument(latestFile);
-                }
-                if (doc != null)
-                {
-                    try
-                    {
-                        doc.Content = File.ReadAllText(latestFile);
-                        doc.VersionHistory = sortedFiles.ToList();
-                        documents.Add(doc);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Ошибка загрузки файла {latestFile}: {ex.Message}");
-                    }
+                    Console.WriteLine($"Ошибка загрузки файла {file}: {ex.Message}");
                 }
             }
         }
@@ -127,28 +99,6 @@ namespace OOPsl.DocumentFunctions.Managers
             {
                 Console.WriteLine("Ошибка загрузки файлов из облака: " + ex.Message);
             }
-        }
-
-        private string GetBaseName(string filePath)
-        {
-            string fileName = Path.GetFileNameWithoutExtension(filePath);
-            int index = fileName.LastIndexOf("_v");
-            if (index > 0)
-            {
-                return fileName.Substring(0, index);
-            }
-            return fileName;
-        }
-
-        private int GetVersionNumber(string filePath)
-        {
-            string fileName = Path.GetFileNameWithoutExtension(filePath);
-            int index = fileName.LastIndexOf("_v");
-            if (index > 0 && int.TryParse(fileName.Substring(index + 2), out int version))
-            {
-                return version;
-            }
-            return 1;
         }
     }
 }

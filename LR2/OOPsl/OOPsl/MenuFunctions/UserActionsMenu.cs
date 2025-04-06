@@ -252,6 +252,7 @@ namespace OOPsl.MenuFunctions
 
         private void DeleteFile()
         {
+            IStorageStrategy storageStrategy;
             Console.Clear();
             Console.WriteLine("Выберите источник файла для удаления:");
             Console.WriteLine("1. Локальные документы");
@@ -259,9 +260,15 @@ namespace OOPsl.MenuFunctions
             string sourceChoice = Console.ReadLine();
             List<Document> docs;
             if (sourceChoice == "1")
+            {
                 docs = documentManager.GetLocalDocuments();
+                storageStrategy = new LocalFileStorage();
+            }
             else if (sourceChoice == "2")
+            {
                 docs = documentManager.GetCloudDocuments();
+                storageStrategy = new GoogleDriveStorage();
+            }
             else
             {
                 Console.WriteLine("Неверный выбор.");
@@ -293,7 +300,7 @@ namespace OOPsl.MenuFunctions
                 else
                 {
                     docToDelete.Delete();
-                    documentManager.RemoveDocument(docToDelete);
+                    documentManager.RemoveDocument(docToDelete, storageStrategy);
                     currentUser.OwnedDocuments.Remove(docToDelete);
                     Console.WriteLine($"Документ \"{docToDelete.FileName}\" успешно удалён.");
                 }

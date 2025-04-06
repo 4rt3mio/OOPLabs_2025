@@ -6,5 +6,6 @@ namespace OOPsl.DocumentFunctions.Storage
     {
         void Save(Document document);
         Document Load(string fileName);
+        void Delete(Document document);
     }
 }

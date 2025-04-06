@@ -50,5 +50,18 @@ namespace OOPsl.DocumentFunctions.Storage
             }
             return null;
         }
+
+        public void Delete(Document document)
+        {
+            if (File.Exists(document.FileName))
+            {
+                File.Delete(document.FileName);
+                Console.WriteLine($"Файл {document.FileName} удалён локально.");
+            }
+            else
+            {
+                Console.WriteLine($"Файл {document.FileName} не найден локально.");
+            }
+        }
     }
 }

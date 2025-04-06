@@ -146,5 +146,32 @@ namespace OOPsl.DocumentFunctions.Storage
             }
             return driveDocs;
         }
+
+        public void Delete(Document document)
+        {
+            try
+            {
+                var listRequest = service.Files.List();
+                listRequest.Q = $"name = '{Path.GetFileName(document.FileName)}' and '{folderId}' in parents and trashed=false";
+                listRequest.Fields = "files(id, name)";
+                var result = listRequest.Execute();
+
+                if (result.Files == null || result.Files.Count == 0)
+                {
+                    Console.WriteLine("Файл не найден на Google Диске.");
+                    return;
+                }
+
+                var fileId = result.Files.First().Id;
+                var deleteRequest = service.Files.Delete(fileId);
+                deleteRequest.Execute();
+
+                Console.WriteLine($"Документ \"{document.FileName}\" успешно удалён с Google Диска.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при удалении файла с Google Диска: " + ex.Message);
+            }
+        }
     }
 }
