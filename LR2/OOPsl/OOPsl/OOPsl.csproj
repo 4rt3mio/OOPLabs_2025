@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <Folder Include="Files\LocalFiles\" />
-    <Folder Include="Files\CloudFiles\" />
+    <Folder Include="Files\History\" />
   </ItemGroup>
 
   <ItemGroup>

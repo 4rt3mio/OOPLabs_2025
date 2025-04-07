@@ -1,33 +1,32 @@
-﻿using OOPsl.DocumentFunctions;
+﻿using Newtonsoft.Json;
+using OOPsl.DocumentFunctions;
 using OOPsl.DocumentFunctions.Formats;
 
 namespace OOPsl.DocumentFunctions.Storage
 {
     public class LocalFileStorage : IStorageStrategy
     {
-        // Абсолютный путь к локальному хранилищу
-        private readonly string localFolder = @"D:\OOP\LR2\OOPsl\OOPsl\Files\LocalFiles";
+        private readonly string documentsFolder = @"D:\OOP\LR2\OOPsl\OOPsl\Files\LocalFiles";
+        private readonly string historyFolder = @"D:\OOP\LR2\OOPsl\OOPsl\Files\LocalHistory";
 
         public LocalFileStorage()
         {
-            if (!Directory.Exists(localFolder))
-            {
-                Directory.CreateDirectory(localFolder);
-            }
+            if (!Directory.Exists(documentsFolder))
+                Directory.CreateDirectory(documentsFolder);
+            if (!Directory.Exists(historyFolder))
+                Directory.CreateDirectory(historyFolder);
         }
 
         public void Save(Document document)
         {
             try
             {
-                // Формируем полный путь, используя имя файла документа
-                string fullPath = Path.Combine(localFolder, Path.GetFileName(document.FileName));
-                File.WriteAllText(fullPath, document.Content);
-                Console.WriteLine($"Документ сохранён локально по адресу: {fullPath}");
+                File.WriteAllText(document.FileName, document.Content);
+                SaveHistory(document);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при сохранении локально: {ex.Message}");
+                Console.WriteLine("Ошибка при сохранении файла локально: " + ex.Message);
             }
         }
 
@@ -35,33 +34,101 @@ namespace OOPsl.DocumentFunctions.Storage
         {
             try
             {
-                string fullPath = Path.Combine(localFolder, fileName);
+                string fullPath = Path.Combine(documentsFolder, fileName);
                 if (File.Exists(fullPath))
                 {
-                    // Для примера создаём простой PlainTextDocument
                     var doc = new PlainTextDocument(fullPath);
                     doc.Content = File.ReadAllText(fullPath);
+                    doc.VersionHistory = LoadHistory(doc);
                     return doc;
+                }
+                else
+                {
+                    Console.WriteLine("Локальный файл не найден: " + fullPath);
+                    return null;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при загрузке локально: {ex.Message}");
+                Console.WriteLine("Ошибка при загрузке локального файла: " + ex.Message);
+                return null;
             }
-            return null;
         }
 
         public void Delete(Document document)
         {
-            if (File.Exists(document.FileName))
+            try
             {
-                File.Delete(document.FileName);
-                Console.WriteLine($"Файл {document.FileName} удалён локально.");
+                if (File.Exists(document.FileName))
+                {
+                    File.Delete(document.FileName);
+                }
+                DeleteHistory(document);
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine($"Файл {document.FileName} не найден локально.");
+                Console.WriteLine("Ошибка при удалении локального файла: " + ex.Message);
             }
+        }
+
+        public void SaveHistory(Document document)
+        {
+            try
+            {
+                string historyPath = GetHistoryFilePath(document);
+                document.VersionHistory.Add(document.Content);
+                string json = JsonConvert.SerializeObject(document.VersionHistory, Formatting.Indented);
+                File.WriteAllText(historyPath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при сохранении истории: " + ex.Message);
+            }
+        }
+
+        public List<string> LoadHistory(Document document)
+        {
+            try
+            {
+                string historyPath = GetHistoryFilePath(document);
+                if (File.Exists(historyPath))
+                {
+                    string json = File.ReadAllText(historyPath);
+                    return JsonConvert.DeserializeObject<List<string>>(json) ?? new List<string>();
+                }
+                else
+                {
+                    return new List<string>();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при загрузке истории: " + ex.Message);
+                return new List<string>();
+            }
+        }
+
+        public void DeleteHistory(Document document)
+        {
+            try
+            {
+                string historyPath = GetHistoryFilePath(document);
+                if (File.Exists(historyPath))
+                {
+                    File.Delete(historyPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при удалении истории: " + ex.Message);
+            }
+        }
+
+        private string GetHistoryFilePath(Document document)
+        {
+            string baseName = Path.GetFileNameWithoutExtension(document.FileName);
+            string historyFileName = $"{baseName}_history.json";
+            return Path.Combine(historyFolder, historyFileName);
         }
     }
 }

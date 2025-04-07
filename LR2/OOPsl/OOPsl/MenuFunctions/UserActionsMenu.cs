@@ -5,6 +5,7 @@ using OOPsl.DocumentFunctions.Formats;
 using System.Reflection.Metadata;
 using Document = OOPsl.DocumentFunctions.Document;
 using OOPsl.DocumentFunctions.Storage;
+using System.Xml.Linq;
 
 namespace OOPsl.MenuFunctions
 {
@@ -34,10 +35,11 @@ namespace OOPsl.MenuFunctions
                 Console.WriteLine("2. Показать все файлы (с ролями)");
                 Console.WriteLine("3. Открыть файл");
                 Console.WriteLine("4. Удалить файл");
-                Console.WriteLine("5. Изменить роли для файла");
-                Console.WriteLine("6. Показать уведомления");
-                Console.WriteLine("7. Вернуться к выбору пользователя");
-                Console.WriteLine("8. Выход из приложения");
+                Console.WriteLine("5. Посмотреть историю файл");
+                Console.WriteLine("6. Изменить роли для файла");
+                Console.WriteLine("7. Показать уведомления");
+                Console.WriteLine("8. Вернуться к выбору пользователя");
+                Console.WriteLine("9. Выход из приложения");
                 Console.Write("Выберите действие: ");
                 string choice = Console.ReadLine();
 
@@ -56,15 +58,18 @@ namespace OOPsl.MenuFunctions
                         DeleteFile();
                         break;
                     case "5":
-                        ChangeRolesForFile();
+                        ViewDocumentHistory();
                         break;
                     case "6":
-                        ShowNotifications();
+                        ChangeRolesForFile();
                         break;
                     case "7":
-                        exitMenu = true;
+                        ShowNotifications();
                         break;
                     case "8":
+                        exitMenu = true;
+                        break;
+                    case "9":
                         Environment.Exit(0);
                         break;
                     default:
@@ -188,7 +193,7 @@ namespace OOPsl.MenuFunctions
             }
             else if (sourceChoice == "2")
             {
-                docs = new GoogleDriveStorage().GetAllDocumentsFromDrive();
+                docs = documentManager.GetCloudDocuments();
             }
             else
             {
@@ -228,8 +233,27 @@ namespace OOPsl.MenuFunctions
                 Console.WriteLine("Открывается режим редактирования. Нажмите Escape для выхода из редактора.");
                 TextEditor editor = new TextEditor(docToOpen);
                 editor.Run();
-                Console.WriteLine("Вы вышли из режима редактирования.");
-                Console.WriteLine("Нажмите любую клавишу для возврата...");
+                Console.WriteLine("Сохранить файл:");
+                Console.WriteLine("1. Локально");
+                Console.WriteLine("2. В облако (Google Drive)");
+                Console.Write("Выберите опцию (1 или 2): ");
+                var key = Console.ReadKey();
+                Console.WriteLine();
+                IStorageStrategy storageStrategy = null;
+                if (key.KeyChar == '1')
+                    storageStrategy = new LocalFileStorage();
+                else if (key.KeyChar == '2')
+                    storageStrategy = new GoogleDriveStorage();
+                else
+                {
+                    Console.WriteLine("Неверный выбор. Сохранение отменено.");
+                    Console.WriteLine("Нажмите любую клавишу для возврата...");
+                    Console.ReadKey();
+                    return;
+                }
+                documentManager.SaveDocument(docToOpen, storageStrategy);
+                docToOpen.Notify();
+                Console.WriteLine("Файл сохранён. Нажмите любую клавишу для возврата...");
                 Console.ReadKey();
             }
             else if (currentUserAccess.Role == DocumentRole.Viewer)
@@ -306,6 +330,74 @@ namespace OOPsl.MenuFunctions
                 }
             }
             Console.WriteLine("Нажмите любую клавишу для продолжения...");
+            Console.ReadKey();
+        }
+
+        private void ViewDocumentHistory()
+        {
+            Console.Clear();
+            Console.WriteLine("Выберите источник документа:");
+            Console.WriteLine("1. Локальные документы");
+            Console.WriteLine("2. Документы с Google Drive");
+            string sourceChoice = Console.ReadLine();
+
+            IStorageStrategy storageStrategy;
+            List<Document> docs;
+
+            if (sourceChoice == "1")
+            {
+                storageStrategy = new LocalFileStorage();
+                docs = documentManager.GetLocalDocuments();
+            }
+            else if (sourceChoice == "2")
+            {
+                storageStrategy = new GoogleDriveStorage();
+                docs = documentManager.GetCloudDocuments();
+            }
+            else
+            {
+                Console.WriteLine("Неверный выбор.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.Write("Введите имя документа: ");
+            string inputName = Console.ReadLine();
+
+            Document doc = docs.FirstOrDefault(d =>
+                d.FileName.Equals(inputName, StringComparison.OrdinalIgnoreCase) ||
+                System.IO.Path.GetFileName(d.FileName).Equals(inputName, StringComparison.OrdinalIgnoreCase));
+
+            if (doc == null)
+            {
+                Console.WriteLine("Документ не найден.");
+                Console.ReadKey();
+                return;
+            }
+
+            var history = storageStrategy.LoadHistory(doc);
+            if (history == null || history.Count == 0)
+            {
+                Console.WriteLine("История изменений не найдена.");
+            }
+            else
+            {
+                Console.WriteLine($"Всего версий: {history.Count}");
+                Console.Write("Введите номер версии для просмотра (1 - самая старая, {0} - последняя): ", history.Count);
+                if (int.TryParse(Console.ReadLine(), out int versionNumber) &&
+                    versionNumber >= 1 && versionNumber <= history.Count)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"=== Версия {versionNumber} документа \"{doc.FileName}\" ===\n");
+                    Console.WriteLine(history[versionNumber - 1]);
+                }
+                else
+                {
+                    Console.WriteLine("Некорректный номер версии.");
+                }
+            }
+
+            Console.WriteLine("\nНажмите любую клавишу для возврата...");
             Console.ReadKey();
         }
 

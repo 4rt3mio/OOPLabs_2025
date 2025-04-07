@@ -1,7 +1,7 @@
-﻿using OOPsl.DocumentFunctions.Formats;
+﻿using Newtonsoft.Json;
+using OOPsl.DocumentFunctions.Formats;
 using OOPsl.DocumentFunctions.Storage;
 using OOPsl.UserFunctions;
-using System.Reflection.Metadata;
 
 namespace OOPsl.DocumentFunctions.Managers
 {
@@ -9,15 +9,15 @@ namespace OOPsl.DocumentFunctions.Managers
     {
         private List<Document> documents = new List<Document>();
         private DocumentAccessManager accessManager;
-        private string documentsFolder = @"D:\OOP\LR2\OOPsl\OOPsl\Files\LocalFiles";
+        private string documentsFolder = @"D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\LocalFiles";
+        private string historyFolder = @"D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\DocumentHistories";
 
         public DocumentManager(DocumentAccessManager accessManager)
         {
             this.accessManager = accessManager;
-            if (!Directory.Exists(documentsFolder))
-            {
-                Directory.CreateDirectory(documentsFolder);
-            }
+            Directory.CreateDirectory(documentsFolder);
+            Directory.CreateDirectory(historyFolder);
+
             LoadDocumentsFromStorage(documentsFolder);
             LoadDocumentsFromCloud();
         }
@@ -67,14 +67,20 @@ namespace OOPsl.DocumentFunctions.Managers
 
         private void LoadDocumentsFromStorage(string folderPath)
         {
+            IStorageStrategy localStorage = new LocalFileStorage();
             string[] files = Directory.GetFiles(folderPath);
+
             foreach (var file in files)
             {
                 try
                 {
                     string content = File.ReadAllText(file);
-                    Document doc = new PlainTextDocument(file);
-                    doc.Content = content;
+                    Document doc = new PlainTextDocument(file)
+                    {
+                        Content = content,
+                        FileName = file
+                    };
+                    doc.VersionHistory = localStorage.LoadHistory(doc);
                     documents.Add(doc);
                 }
                 catch (Exception ex)
@@ -90,9 +96,11 @@ namespace OOPsl.DocumentFunctions.Managers
             {
                 GoogleDriveStorage driveStorage = new GoogleDriveStorage();
                 var driveDocs = driveStorage.GetAllDocumentsFromDrive();
-                if (driveDocs != null && driveDocs.Count > 0)
+
+                foreach (var doc in driveDocs)
                 {
-                    documents.AddRange(driveDocs);
+                    doc.VersionHistory = driveStorage.LoadHistory(doc);
+                    documents.Add(doc);
                 }
             }
             catch (Exception ex)

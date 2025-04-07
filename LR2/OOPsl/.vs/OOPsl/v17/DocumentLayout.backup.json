@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "D:\\OOP\\LR2\\OOPsl\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\managers\\documentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\documentfunctions\\managers\\documentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\storage\\googledrivestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\documentfunctions\\storage\\googledrivestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\storage\\localfilestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\documentfunctions\\storage\\localfilestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\menufunctions\\useractionsmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\menufunctions\\useractionsmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\managers\\documentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\documentfunctions\\managers\\documentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\storage\\istoragestrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\documentfunctions\\storage\\istoragestrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\documentfunctions\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\storage\\googledrivestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\documentfunctions\\storage\\googledrivestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\files\\history\\fj_history.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\files\\history\\fj_history.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\texteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\texteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\menufunctions\\useractionsmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\menufunctions\\useractionsmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|solutionrelative:oopsl\\documentfunctions\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{46A2A1C0-ADD2-4D47-9386-25CD04ADC1F8}|OOPsl\\OOPsl.csproj|d:\\oop\\lr2\\oopsl\\oopsl\\documentfunctions\\commands\\commandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -142,71 +146,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DocumentManager.cs",
-              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Managers\\DocumentManager.cs",
-              "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Managers\\DocumentManager.cs",
-              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Managers\\DocumentManager.cs*",
-              "RelativeToolTip": "OOPsl\\DocumentFunctions\\Managers\\DocumentManager.cs*",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAEwAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T20:03:28.815Z",
+              "DocumentIndex": 5,
+              "Title": "fj_history.json",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\History\\fj_history.json",
+              "RelativeDocumentMoniker": "OOPsl\\Files\\History\\fj_history.json",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\History\\fj_history.json",
+              "RelativeToolTip": "OOPsl\\Files\\History\\fj_history.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-07T18:44:48.913Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "GoogleDriveStorage.cs",
-              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Storage\\GoogleDriveStorage.cs",
-              "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Storage\\GoogleDriveStorage.cs",
-              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Storage\\GoogleDriveStorage.cs",
-              "RelativeToolTip": "OOPsl\\DocumentFunctions\\Storage\\GoogleDriveStorage.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAuwK4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T13:24:43.651Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "IStorageStrategy.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Storage\\IStorageStrategy.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Storage\\IStorageStrategy.cs",
               "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Storage\\IStorageStrategy.cs",
               "RelativeToolTip": "OOPsl\\DocumentFunctions\\Storage\\IStorageStrategy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T14:13:43.4Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TextEditor.cs",
-              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\TextEditor.cs",
-              "RelativeDocumentMoniker": "OOPsl\\TextEditor.cs",
-              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\TextEditor.cs",
-              "RelativeToolTip": "OOPsl\\TextEditor.cs",
-              "ViewState": "AgIAAJcBAAAAAAAAAAAiwLABAAArAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UserActionsMenu.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MenuFunctions\\UserActionsMenu.cs",
+              "RelativeDocumentMoniker": "OOPsl\\MenuFunctions\\UserActionsMenu.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MenuFunctions\\UserActionsMenu.cs",
+              "RelativeToolTip": "OOPsl\\MenuFunctions\\UserActionsMenu.cs",
+              "ViewState": "AgIAAG8BAAAAAAAAAAAAAJEBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T07:50:56.967Z",
+              "WhenOpened": "2025-04-01T19:33:01.498Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Document.cs",
-              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Document.cs",
-              "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Document.cs",
-              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Document.cs",
-              "RelativeToolTip": "OOPsl\\DocumentFunctions\\Document.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAABOAAAAAAAAAA==",
+              "Title": "DocumentManager.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Managers\\DocumentManager.cs",
+              "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Managers\\DocumentManager.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Managers\\DocumentManager.cs",
+              "RelativeToolTip": "OOPsl\\DocumentFunctions\\Managers\\DocumentManager.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwDgAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T21:19:34.77Z",
+              "WhenOpened": "2025-03-30T20:03:28.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GoogleDriveStorage.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Storage\\GoogleDriveStorage.cs",
+              "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Storage\\GoogleDriveStorage.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Storage\\GoogleDriveStorage.cs*",
+              "RelativeToolTip": "OOPsl\\DocumentFunctions\\Storage\\GoogleDriveStorage.cs*",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAgwGIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T13:24:43.651Z",
               "EditorCaption": ""
             },
             {
@@ -217,7 +221,7 @@
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Storage\\LocalFileStorage.cs",
               "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Storage\\LocalFileStorage.cs",
               "RelativeToolTip": "OOPsl\\DocumentFunctions\\Storage\\LocalFileStorage.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwB0AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T14:14:06.469Z",
               "EditorCaption": ""
@@ -225,32 +229,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "UserActionsMenu.cs",
-              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MenuFunctions\\UserActionsMenu.cs",
-              "RelativeDocumentMoniker": "OOPsl\\MenuFunctions\\UserActionsMenu.cs",
-              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MenuFunctions\\UserActionsMenu.cs",
-              "RelativeToolTip": "OOPsl\\MenuFunctions\\UserActionsMenu.cs",
-              "ViewState": "AgIAADsBAAAAAAAAAAAIwCsBAAAUAAAAAAAAAA==",
+              "Title": "TextEditor.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\TextEditor.cs",
+              "RelativeDocumentMoniker": "OOPsl\\TextEditor.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\TextEditor.cs",
+              "RelativeToolTip": "OOPsl\\TextEditor.cs",
+              "ViewState": "AgIAAIEBAAAAAAAAAAAqwJ0BAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T19:33:01.498Z",
+              "WhenOpened": "2025-04-02T07:50:56.967Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "Document.cs",
+              "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Document.cs",
+              "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Document.cs",
+              "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Document.cs",
+              "RelativeToolTip": "OOPsl\\DocumentFunctions\\Document.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:19:34.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "CommandManager.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Commands\\CommandManager.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Commands\\CommandManager.cs",
               "ToolTip": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Commands\\CommandManager.cs",
               "RelativeToolTip": "OOPsl\\DocumentFunctions\\Commands\\CommandManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T14:13:11.678Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "EditorSettings.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\EditorSettings.cs",
               "RelativeDocumentMoniker": "OOPsl\\EditorSettings.cs",
@@ -258,12 +275,11 @@
               "RelativeToolTip": "OOPsl\\EditorSettings.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAowEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T14:17:33.229Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T14:17:33.229Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "UserManager.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\UserFunctions\\UserManager.cs",
               "RelativeDocumentMoniker": "OOPsl\\UserFunctions\\UserManager.cs",
@@ -275,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "PlainTextDocument.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Formats\\PlainTextDocument.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Formats\\PlainTextDocument.cs",
@@ -287,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "DocumentAccessManager.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Managers\\DocumentAccessManager.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Managers\\DocumentAccessManager.cs",
@@ -299,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "YourEditorClass.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\YourEditorClass.cs",
               "RelativeDocumentMoniker": "OOPsl\\YourEditorClass.cs",
@@ -311,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "RichTextDocument.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Formats\\RichTextDocument.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Formats\\RichTextDocument.cs",
@@ -323,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "MarkdownDocument.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Formats\\MarkdownDocument.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Formats\\MarkdownDocument.cs",
@@ -335,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "DocumentRole.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\DocumentRole.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\DocumentRole.cs",
@@ -347,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "ISubject.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\ISubject.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\ISubject.cs",
@@ -359,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "IObserver.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\UserFunctions\\IObserver.cs",
               "RelativeDocumentMoniker": "OOPsl\\UserFunctions\\IObserver.cs",
@@ -371,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "RegularUser.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\UserFunctions\\RegularUser.cs",
               "RelativeDocumentMoniker": "OOPsl\\UserFunctions\\RegularUser.cs",
@@ -383,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\UserFunctions\\User.cs",
               "RelativeDocumentMoniker": "OOPsl\\UserFunctions\\User.cs",
@@ -395,7 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "ConsoleHelper.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\ConsoleHelper.cs",
               "RelativeDocumentMoniker": "OOPsl\\ConsoleHelper.cs",
@@ -407,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Program.cs",
               "RelativeDocumentMoniker": "OOPsl\\Program.cs",
@@ -419,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "ConsoleMenu.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MenuFunctions\\ConsoleMenu.cs",
               "RelativeDocumentMoniker": "OOPsl\\MenuFunctions\\ConsoleMenu.cs",
@@ -431,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "ApplicationMenu.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MenuFunctions\\ApplicationMenu.cs",
               "RelativeDocumentMoniker": "OOPsl\\MenuFunctions\\ApplicationMenu.cs",
@@ -443,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "IMenu.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\MenuFunctions\\IMenu.cs",
               "RelativeDocumentMoniker": "OOPsl\\MenuFunctions\\IMenu.cs",
@@ -455,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "AccessControlEntry.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Managers\\AccessControlEntry.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Managers\\AccessControlEntry.cs",
@@ -467,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "InsertCommand.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Commands\\InsertCommand.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Commands\\InsertCommand.cs",
@@ -479,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "DeleteCommand.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Commands\\DeleteCommand.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Commands\\DeleteCommand.cs",
@@ -491,7 +507,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "ICommand.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\DocumentFunctions\\Commands\\ICommand.cs",
               "RelativeDocumentMoniker": "OOPsl\\DocumentFunctions\\Commands\\ICommand.cs",
@@ -503,7 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "access_manager.json",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\access_manager.json",
               "RelativeDocumentMoniker": "OOPsl\\Files\\access_manager.json",
@@ -515,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "users.json",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\Files\\users.json",
               "RelativeDocumentMoniker": "OOPsl\\Files\\users.json",
@@ -527,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "ClassDiagram1.cd",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\ClassDiagram1.cd",
               "RelativeDocumentMoniker": "OOPsl\\ClassDiagram1.cd",
@@ -538,7 +554,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "IUserRoleStrategy.cs",
               "DocumentMoniker": "D:\\OOP\\LR2\\OOPsl\\OOPsl\\IUserRoleStrategy.cs",
               "RelativeDocumentMoniker": "OOPsl\\IUserRoleStrategy.cs",

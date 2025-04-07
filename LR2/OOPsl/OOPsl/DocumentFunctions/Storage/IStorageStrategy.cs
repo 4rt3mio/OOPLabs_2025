@@ -7,5 +7,9 @@ namespace OOPsl.DocumentFunctions.Storage
         void Save(Document document);
         Document Load(string fileName);
         void Delete(Document document);
+
+        void SaveHistory(Document document);
+        List<string> LoadHistory(Document document);
+        void DeleteHistory(Document document);
     }
 }

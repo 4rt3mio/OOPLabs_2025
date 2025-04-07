@@ -412,28 +412,6 @@ namespace OOPsl
                 Console.ForegroundColor = ConsoleColor.White;
             }
             EditorSettings.Instance.ApplyFontSettings();
-            Console.WriteLine("Сохранить файл:");
-            Console.WriteLine("1. Локально");
-            Console.WriteLine("2. В облако (Google Drive)");
-            Console.Write("Выберите опцию (1 или 2): ");
-            var key = Console.ReadKey();
-            Console.WriteLine();
-            IStorageStrategy storageStrategy = null;
-            if (key.KeyChar == '1')
-                storageStrategy = new LocalFileStorage();
-            else if (key.KeyChar == '2')
-                storageStrategy = new GoogleDriveStorage();
-            else
-            {
-                Console.WriteLine("Неверный выбор. Сохранение отменено.");
-                Console.WriteLine("Нажмите любую клавишу для возврата...");
-                Console.ReadKey();
-                return;
-            }
-            storageStrategy.Save(document);
-            document.Notify();
-            Console.WriteLine("Файл сохранён. Нажмите любую клавишу для возврата...");
-            Console.ReadKey();
         }
     }
 }

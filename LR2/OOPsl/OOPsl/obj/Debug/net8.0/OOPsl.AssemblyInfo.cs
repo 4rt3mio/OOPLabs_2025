@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OOPsl")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da8426b4092a74ba7cfa07bc6aa5d29b44f963ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a34e75a229b46b3cbd1ca204cb592290c5820a44")]
 [assembly: System.Reflection.AssemblyProductAttribute("OOPsl")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OOPsl")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
