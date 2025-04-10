@@ -345,7 +345,6 @@ namespace OOPsl.DocumentFunctions.Displayers
                 {
                     break;
                 }
-                // Обработка Backspace
                 else if (key.Key == ConsoleKey.Backspace)
                 {
                     if (HasSelection())

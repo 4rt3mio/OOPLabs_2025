@@ -349,50 +349,95 @@ namespace OOPsl.MenuFunctions
                             return;
                         }
 
-                        //Console.WriteLine("\nВыберите формат для сохранения файла:");
-                        //Console.WriteLine("1. Markdown (.md)");
-                        //Console.WriteLine("2. Rich Text Format (.rtf)");
-                        //Console.WriteLine("3. Plain Text (.txt)");
-                        //Console.WriteLine("4. JSON (.json)");
-                        //Console.WriteLine("5. XML (.xml)");
-                        //Console.Write("Введите номер пункта: ");
-                        //string formatChoice = Console.ReadLine();
+                        string sourceExtension = Path.GetExtension(docToOpen.FileName).TrimStart('.').ToLower();
+                        string formatChoice = "";
+                        string targetExtension = "";
 
-                        //string targetExtension = "";
-                        //switch (formatChoice)
-                        //{
-                        //    case "1":
-                        //        targetExtension = "md";
-                        //        break;
-                        //    case "2":
-                        //        targetExtension = "rtf";
-                        //        break;
-                        //    case "3":
-                        //        targetExtension = "txt";
-                        //        break;
-                        //    case "4":
-                        //        targetExtension = "json";
-                        //        break;
-                        //    case "5":
-                        //        targetExtension = "xml";
-                        //        break;
-                        //    default:
-                        //        Console.WriteLine("Неверный выбор формата. Сохранение отменено.");
-                        //        Console.WriteLine("Нажмите любую клавишу для возврата...");
-                        //        Console.ReadKey();
-                        //        return;
-                        //}
-                        //string sourceExtension = Path.GetExtension(docToOpen.FileName).TrimStart('.').ToLower();
+                        if (sourceExtension == "md" || sourceExtension == "rtf")
+                        {
+                            Console.WriteLine("\nВыберите формат для сохранения файла:");
+                            Console.WriteLine("1. Markdown (.md)");
+                            Console.WriteLine("2. Rich Text Format (.rtf)");
+                            Console.Write("Введите номер пункта: ");
+                            formatChoice = Console.ReadLine();
+                            switch (formatChoice)
+                            {
+                                case "1":
+                                    targetExtension = "md";
+                                    break;
+                                case "2":
+                                    targetExtension = "rtf";
+                                    break;
+                                default:
+                                    Console.WriteLine("Неверный выбор формата. Сохранение отменено.");
+                                    Console.WriteLine("Нажмите любую клавишу для возврата...");
+                                    Console.ReadKey();
+                                    return;
+                            }
+                        }
+                        else if (sourceExtension == "json" || sourceExtension == "xml")
+                        {
+                            Console.WriteLine("\nВыберите формат для сохранения файла:");
+                            Console.WriteLine("1. XML (.xml)");
+                            Console.WriteLine("2. JSON (.json)");
+                            Console.Write("Введите номер пункта: ");
+                            formatChoice = Console.ReadLine();
+                            switch (formatChoice)
+                            {
+                                case "1":
+                                    targetExtension = "xml";
+                                    break;
+                                case "2":
+                                    targetExtension = "json";
+                                    break;
+                                default:
+                                    Console.WriteLine("Неверный выбор формата. Сохранение отменено.");
+                                    Console.WriteLine("Нажмите любую клавишу для возврата...");
+                                    Console.ReadKey();
+                                    return;
+                            }
+                        }
+                        else
+                        {
+                            targetExtension = sourceExtension;
+                        }
 
-                        //if (!sourceExtension.Equals(targetExtension, StringComparison.OrdinalIgnoreCase))
-                        //{
-                        //    DocumentFormatConverter converter = new DocumentFormatConverter();
-                        //    string newContent = converter.Convert(docToOpen.Content, sourceExtension, targetExtension);
-                        //    docToOpen.Content = newContent;
-                        //    storageStrategy.Delete(docToOpen);
-                        //    string baseName = Path.GetFileNameWithoutExtension(docToOpen.FileName);
-                        //    docToOpen.FileName = Path.Combine(Path.GetDirectoryName(docToOpen.FileName) ?? "", baseName + "." + targetExtension);
-                        //}
+                        string newContent = docToOpen.Content;
+
+                        if (!sourceExtension.Equals(targetExtension, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if ((sourceExtension == "md" || sourceExtension == "rtf") && (targetExtension == "md" || targetExtension == "rtf"))
+                            {
+                                if (sourceExtension == "md" && targetExtension == "rtf")
+                                {
+                                    MarkdownToRtfConverter mdToRtf = new MarkdownToRtfConverter();
+                                    newContent = mdToRtf.Convert(docToOpen.Content);
+                                }
+                                else if (sourceExtension == "rtf" && targetExtension == "md")
+                                {
+                                    RtfToMarkdownConverter rtfToMd = new RtfToMarkdownConverter();
+                                    newContent = rtfToMd.Convert(docToOpen.Content);
+                                }
+                            }
+                            else if ((sourceExtension == "json" || sourceExtension == "xml") && (targetExtension == "json" || targetExtension == "xml"))
+                            {
+                                if (sourceExtension == "json" && targetExtension == "xml")
+                                {
+                                    JsonToXmlConverter jsonToXml = new JsonToXmlConverter();
+                                    newContent = jsonToXml.Convert(docToOpen.Content);
+                                }
+                                else if (sourceExtension == "xml" && targetExtension == "json")
+                                {
+                                    XmlToJsonConverter xmlToJson = new XmlToJsonConverter();
+                                    newContent = xmlToJson.Convert(docToOpen.Content);
+                                }
+                            }
+                        }
+
+                        storageStrategy.Delete(docToOpen);
+                        string baseName = Path.GetFileNameWithoutExtension(docToOpen.FileName);
+                        docToOpen.FileName = baseName + "." + targetExtension;
+                        docToOpen.Content = newContent;
 
                         documentManager.SaveDocument(docToOpen, storageStrategy);
                         docToOpen.Notify();

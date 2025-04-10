@@ -1,9 +1,4 @@
-﻿//using OOPsl;
-//Console.BackgroundColor = ConsoleColor.Black;
-//string filePath = "D:\\фигня/qt.txt";
-//var editor = new YourEditorClass();
-//editor.Run(filePath);
-using OOPsl.MenuFunctions;
+﻿using OOPsl.MenuFunctions;
 using OOPsl.DocumentFunctions.Managers;
 using OOPsl.UserFunctions;
 

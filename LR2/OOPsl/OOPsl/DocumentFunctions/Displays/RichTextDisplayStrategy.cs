@@ -40,13 +40,11 @@ namespace OOPsl.DocumentFunctions.Displays
                 }
             }
 
-            // Проверка незакрытых тегов
             while (_tagStack.Count > 0)
             {
                 _errors.Add($"Незакрытый тег <{_tagStack.Pop()}>");
             }
 
-            // Вывод результатов
             if (_errors.Count == 0)
             {
                 output.Append(ResetAnsi);
@@ -63,7 +61,6 @@ namespace OOPsl.DocumentFunctions.Displays
             }
         }
 
-        // Остальные методы без изменений
         private void ProcessTag(string tag, int position, StringBuilder output)
         {
             bool isClosing = tag.StartsWith("</");

@@ -7,6 +7,11 @@ namespace OOPsl.DocumentFunctions.Displays
 {
     public class MarkdownDisplayStrategy : IDisplayStrategy
     {
+        private const string ResetAnsi = "\x1b[0m";
+        private readonly Stack<string> _styleStack = new Stack<string>();
+        private readonly Stack<string> _tagStack = new Stack<string>();
+        private readonly List<string> _errors = new List<string>();
+
         public void Display(Document document)
         {
             string content = document.Content;
@@ -21,19 +26,19 @@ namespace OOPsl.DocumentFunctions.Displays
             }
 
             ApplyFormatting(ref content);
-            Console.WriteLine(content);
+            Console.WriteLine(content + ResetAnsi);
         }
 
         private List<string> ValidateMarkdown(string content)
         {
             var errors = new List<string>();
             var stack = new Stack<string>();
-            var matches = Regex.Matches(content, @"(\*{1,3}|<u>|<\/u>)");
+            var matches = Regex.Matches(content, @"(\*{3}|\*{2}|\*|<u>|<\/u>)");
 
-            for (int i = 0; i < matches.Count; i++)
+            foreach (Match match in matches)
             {
-                var match = matches[i];
                 string token = match.Value;
+                int position = match.Index;
 
                 switch (token)
                 {
@@ -42,10 +47,10 @@ namespace OOPsl.DocumentFunctions.Displays
                         break;
                     case "</u>":
                         if (stack.Count == 0 || stack.Pop() != "u")
-                            errors.Add($"Непарный тег </u> на позиции {match.Index}");
+                            errors.Add($"Непарный тег </u> на позиции {position}");
                         break;
                     default:
-                        HandleAsterisks(token, match.Index, stack, errors);
+                        HandleAsterisks(token, position, stack, errors);
                         break;
                 }
             }
@@ -58,30 +63,39 @@ namespace OOPsl.DocumentFunctions.Displays
 
         private void HandleAsterisks(string token, int position, Stack<string> stack, List<string> errors)
         {
-            int count = token.Length;
-            string expected = count switch { 1 => "*", 2 => "**", 3 => "***", _ => "" };
+            string tagType = token switch
+            {
+                "*" => "i",
+                "**" => "b",
+                "***" => "bi",
+                _ => throw new ArgumentException("Недопустимый тег")
+            };
 
-            if (stack.Count > 0 && stack.Peek() == expected)
+            if (stack.Count > 0 && stack.Peek() == tagType)
+            {
                 stack.Pop();
+            }
             else
-                stack.Push(expected);
+            {
+                stack.Push(tagType);
+            }
         }
 
         private void ApplyFormatting(ref string content)
         {
-            content = Regex.Replace(content, @"<u>\*\*\*(.+?)\*\*\*</u>",
+            content = Regex.Replace(content, @"<u>\*\*\*(.+?)\*\*\*</u>", 
                 m => $"\x1b[4;1;3m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
 
-            content = Regex.Replace(content, @"<u>(.+?)</u>",
-                m => $"\x1b[4m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
-
-            content = Regex.Replace(content, @"\*\*\*(.+?)\*\*\*",
+            content = Regex.Replace(content, @"\*\*\*(.+?)\*\*\*", 
                 m => $"\x1b[1;3m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
 
-            content = Regex.Replace(content, @"\*\*(.+?)\*\*",
+            content = Regex.Replace(content, @"<u>(.+?)</u>", 
+                m => $"\x1b[4m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
+
+            content = Regex.Replace(content, @"\*\*(.+?)\*\*", 
                 m => $"\x1b[1m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
 
-            content = Regex.Replace(content, @"\*(.+?)\*",
+            content = Regex.Replace(content, @"\*(?!\*)(.+?)\*", 
                 m => $"\x1b[3m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
         }
     }

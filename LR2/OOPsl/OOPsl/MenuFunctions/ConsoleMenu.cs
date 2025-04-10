@@ -66,7 +66,6 @@ namespace OOPsl.MenuFunctions
             {
                 User newUser = new RegularUser(newUserName);
                 userManager.AddUser(newUser);
-                // Добавляем новому пользователю роль Viewer во всех существующих документах
                 accessManager.AddUserToAllDocuments(newUser, documentManager.GetAllDocuments());
                 Console.WriteLine($"Пользователь \"{newUserName}\" успешно создан.");
             }

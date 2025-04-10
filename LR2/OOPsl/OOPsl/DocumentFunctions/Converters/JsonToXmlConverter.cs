@@ -1,13 +1,21 @@
-﻿namespace OOPsl.DocumentFunctions.Converters
+﻿using Newtonsoft.Json;
+using System.Xml.Linq;
+
+namespace OOPsl.DocumentFunctions.Converters
 {
-    class JsonToXmlConverter : IToXmlConverter
+    public class JsonToXmlConverter : IFormatConverter
     {
-        public string ConvertToXml(string content)
+        public string Convert(string input)
         {
-            string xml = "<document>" + content
-                .Replace("**", "<strong>")
-                .Replace("*", "<em>") + "</document>";
-            return xml;
+            try
+            {
+                var xDoc = JsonConvert.DeserializeXNode(input, "root");
+                return xDoc.ToString();
+            }
+            catch (Exception ex)
+            {
+                return $"Ошибка конвертации JSON → XML: {ex.Message}";
+            }
         }
     }
 }
