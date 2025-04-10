@@ -190,12 +190,13 @@ namespace OOPsl.MenuFunctions
                 return;
             }
 
-            Console.Write("Введите имя файла для подписки: ");
+            Console.Write("Введите имя файла для подписки (без расширения): ");
             string inputName = Console.ReadLine();
-            Document docToSubscribe = docs.FirstOrDefault(d =>
-                d.FileName.Equals(inputName, StringComparison.OrdinalIgnoreCase) ||
-                System.IO.Path.GetFileName(d.FileName).Equals(inputName, StringComparison.OrdinalIgnoreCase));
+            string inputBaseName = Path.GetFileNameWithoutExtension(inputName);
 
+            Document docToSubscribe = docs.FirstOrDefault(d =>
+                Path.GetFileNameWithoutExtension(d.FileName)
+                    .Equals(inputBaseName, StringComparison.OrdinalIgnoreCase));
             if (docToSubscribe == null)
             {
                 Console.WriteLine("Документ не найден.");
@@ -326,75 +327,83 @@ namespace OOPsl.MenuFunctions
                 {
                     Console.WriteLine("Открывается режим редактирования. Нажмите Escape для выхода из редактора.");
                     TextEditor editor = new TextEditor(docToOpen);
-                    editor.Run();
-
-                    Console.WriteLine("Сохранить файл:");
-                    Console.WriteLine("1. Локально");
-                    Console.WriteLine("2. В облако (Google Drive)");
-                    Console.Write("Выберите опцию (1 или 2): ");
-                    var key = Console.ReadKey();
-                    Console.WriteLine();
-                    IStorageStrategy storageStrategy = null;
-                    if (key.KeyChar == '1')
-                        storageStrategy = new LocalFileStorage();
-                    else if (key.KeyChar == '2')
-                        storageStrategy = new GoogleDriveStorage();
-                    else
+                    try
                     {
-                        Console.WriteLine("Неверный выбор. Сохранение отменено.");
-                        Console.WriteLine("Нажмите любую клавишу для возврата...");
-                        Console.ReadKey();
-                        return;
-                    }
-
-                    Console.WriteLine("\nВыберите формат для сохранения файла:");
-                    Console.WriteLine("1. Markdown (.md)");
-                    Console.WriteLine("2. Rich Text Format (.rtf)");
-                    Console.WriteLine("3. Plain Text (.txt)");
-                    Console.WriteLine("4. JSON (.json)");
-                    Console.WriteLine("5. XML (.xml)");
-                    Console.Write("Введите номер пункта: ");
-                    string formatChoice = Console.ReadLine();
-
-                    string targetExtension = "";
-                    switch (formatChoice)
-                    {
-                        case "1":
-                            targetExtension = "md";
-                            break;
-                        case "2":
-                            targetExtension = "rtf";
-                            break;
-                        case "3":
-                            targetExtension = "txt";
-                            break;
-                        case "4":
-                            targetExtension = "json";
-                            break;
-                        case "5":
-                            targetExtension = "xml";
-                            break;
-                        default:
-                            Console.WriteLine("Неверный выбор формата. Сохранение отменено.");
+                        editor.Run();
+                        Console.WriteLine("Сохранить файл:");
+                        Console.WriteLine("1. Локально");
+                        Console.WriteLine("2. В облако (Google Drive)");
+                        Console.Write("Выберите опцию (1 или 2): ");
+                        var key = Console.ReadKey();
+                        Console.WriteLine();
+                        IStorageStrategy storageStrategy = null;
+                        if (key.KeyChar == '1')
+                            storageStrategy = new LocalFileStorage();
+                        else if (key.KeyChar == '2')
+                            storageStrategy = new GoogleDriveStorage();
+                        else
+                        {
+                            Console.WriteLine("Неверный выбор. Сохранение отменено.");
                             Console.WriteLine("Нажмите любую клавишу для возврата...");
                             Console.ReadKey();
                             return;
-                    }
-                    string sourceExtension = Path.GetExtension(docToOpen.FileName).TrimStart('.').ToLower();
+                        }
 
-                    if (!sourceExtension.Equals(targetExtension, StringComparison.OrdinalIgnoreCase))
+                        //Console.WriteLine("\nВыберите формат для сохранения файла:");
+                        //Console.WriteLine("1. Markdown (.md)");
+                        //Console.WriteLine("2. Rich Text Format (.rtf)");
+                        //Console.WriteLine("3. Plain Text (.txt)");
+                        //Console.WriteLine("4. JSON (.json)");
+                        //Console.WriteLine("5. XML (.xml)");
+                        //Console.Write("Введите номер пункта: ");
+                        //string formatChoice = Console.ReadLine();
+
+                        //string targetExtension = "";
+                        //switch (formatChoice)
+                        //{
+                        //    case "1":
+                        //        targetExtension = "md";
+                        //        break;
+                        //    case "2":
+                        //        targetExtension = "rtf";
+                        //        break;
+                        //    case "3":
+                        //        targetExtension = "txt";
+                        //        break;
+                        //    case "4":
+                        //        targetExtension = "json";
+                        //        break;
+                        //    case "5":
+                        //        targetExtension = "xml";
+                        //        break;
+                        //    default:
+                        //        Console.WriteLine("Неверный выбор формата. Сохранение отменено.");
+                        //        Console.WriteLine("Нажмите любую клавишу для возврата...");
+                        //        Console.ReadKey();
+                        //        return;
+                        //}
+                        //string sourceExtension = Path.GetExtension(docToOpen.FileName).TrimStart('.').ToLower();
+
+                        //if (!sourceExtension.Equals(targetExtension, StringComparison.OrdinalIgnoreCase))
+                        //{
+                        //    DocumentFormatConverter converter = new DocumentFormatConverter();
+                        //    string newContent = converter.Convert(docToOpen.Content, sourceExtension, targetExtension);
+                        //    docToOpen.Content = newContent;
+                        //    storageStrategy.Delete(docToOpen);
+                        //    string baseName = Path.GetFileNameWithoutExtension(docToOpen.FileName);
+                        //    docToOpen.FileName = Path.Combine(Path.GetDirectoryName(docToOpen.FileName) ?? "", baseName + "." + targetExtension);
+                        //}
+
+                        documentManager.SaveDocument(docToOpen, storageStrategy);
+                        docToOpen.Notify();
+                        Console.WriteLine("Файл сохранён!!!");
+                    }
+                    catch (Exception ex)
                     {
-                        DocumentFormatConverter converter = new DocumentFormatConverter();
-                        string newContent = converter.Convert(docToOpen.Content, sourceExtension, targetExtension);
-                        docToOpen.Content = newContent;
-                        //storageStrategy.Delete(docToOpen); тут надо удалить по-другому а то это удаляет вместе с историей
-                        string baseName = Path.GetFileNameWithoutExtension(docToOpen.FileName);
-                        docToOpen.FileName = Path.Combine(Path.GetDirectoryName(docToOpen.FileName) ?? "", baseName + "." + targetExtension);
+                        Console.TreatControlCAsInput = false;
+                        Console.WriteLine("Вы ввели слишком длинный текст, такое Windows терминал не поддерживает, sorry(((((");
                     }
-
-                    documentManager.SaveDocument(docToOpen, storageStrategy);
-                    docToOpen.Notify();
-                    Console.WriteLine("Файл сохранён. Нажмите любую клавишу для возврата...");
+                    Console.WriteLine("Нажмите любую клавишу для возврата...");
                     Console.ReadKey();
                 }
                 else if (modeKey.KeyChar == '2')

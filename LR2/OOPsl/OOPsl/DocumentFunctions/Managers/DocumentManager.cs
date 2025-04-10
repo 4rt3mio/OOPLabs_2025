@@ -33,7 +33,7 @@ namespace OOPsl.DocumentFunctions.Managers
 
         public void SaveDocument(Document document, IStorageStrategy storageStrategy)
         {
-            //document.VersionHistory.Add(document.Content);
+            document.VersionHistory.Add(document.Content);
             storageStrategy.Save(document);
         }
 
@@ -61,6 +61,7 @@ namespace OOPsl.DocumentFunctions.Managers
         {
             documents.Remove(document);
             storageStrategy.Delete(document);
+            storageStrategy.DeleteHistory(document);
         }
 
         private void LoadDocumentsFromStorage(string folderPath)

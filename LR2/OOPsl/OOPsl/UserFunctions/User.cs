@@ -18,7 +18,7 @@ namespace OOPsl.UserFunctions
 
         public virtual void Update(Document document)
         {
-            Notifications.Add($"Документ \"{document.FileName}\" был обнавлён.");
+            Notifications.Add($"Документ \"{document.FileName}\" был обновлён.");
         }
     }
 }

@@ -170,7 +170,7 @@ namespace OOPsl.DocumentFunctions.Storage
                 deleteRequest.Execute();
                 Console.WriteLine($"Документ \"{document.FileName}\" успешно удалён с Google Диска.");
 
-                DeleteHistory(document);
+                //DeleteHistory(document);
             }
             catch (Exception ex)
             {
@@ -182,6 +182,7 @@ namespace OOPsl.DocumentFunctions.Storage
         {
             try
             {
+                DeleteHistory(document);
                 string historyFileName = Path.GetFileNameWithoutExtension(document.FileName) + "_history.json";
                 var fileMetadata = new Google.Apis.Drive.v3.Data.File()
                 {

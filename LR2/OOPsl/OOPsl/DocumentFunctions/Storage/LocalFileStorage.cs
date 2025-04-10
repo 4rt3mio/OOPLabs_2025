@@ -68,7 +68,7 @@ namespace OOPsl.DocumentFunctions.Storage
                 {
                     File.Delete(fullPath);
                 }
-                DeleteHistory(document);
+                //DeleteHistory(document);
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace OOPsl.DocumentFunctions.Storage
             try
             {
                 string historyPath = GetHistoryFilePath(document);
-                document.VersionHistory.Add(document.Content);
+                //document.VersionHistory.Add(document.Content);
                 string json = JsonConvert.SerializeObject(document.VersionHistory, Formatting.Indented);
                 File.WriteAllText(historyPath, json);
             }
