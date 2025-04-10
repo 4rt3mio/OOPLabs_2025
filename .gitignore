@@ -1,0 +1,7 @@
+# Игнорировать файлы сборки
+bin/
+obj/
+build/
+token.json
+Files/
+LR2/OOPsl/.vs/
