@@ -6,10 +6,15 @@ namespace OOPsl.UserFunctions
     public class UserManager
     {
         private List<User> users = new List<User>();
-        private const string UsersFile = @"D:\OOP\LR2\OOPsl\OOPsl\Files\users.json";
+        private readonly string usersFile;
 
-        public UserManager()
+        private const string DefaultUsersFile = @"D:\OOP\LR2\OOPsl\OOPsl\Files\users.json";
+
+        public UserManager() : this(DefaultUsersFile) { }
+
+        public UserManager(string filePath)
         {
+            usersFile = filePath;
             LoadUsers();
         }
 
@@ -39,14 +44,14 @@ namespace OOPsl.UserFunctions
         {
             try
             {
-                string dir = Path.GetDirectoryName(UsersFile);
+                string dir = Path.GetDirectoryName(usersFile);
                 if (!Directory.Exists(dir))
                 {
                     Directory.CreateDirectory(dir);
                 }
                 string json = JsonConvert.SerializeObject(users, Newtonsoft.Json.Formatting.Indented,
                     new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
-                File.WriteAllText(UsersFile, json);
+                File.WriteAllText(usersFile, json);
             }
             catch (Exception ex)
             {
@@ -56,11 +61,11 @@ namespace OOPsl.UserFunctions
 
         private void LoadUsers()
         {
-            if (File.Exists(UsersFile))
+            if (File.Exists(usersFile))
             {
                 try
                 {
-                    string json = File.ReadAllText(UsersFile);
+                    string json = File.ReadAllText(usersFile);
                     users = JsonConvert.DeserializeObject<List<User>>(json,
                         new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All }) ?? new List<User>();
                 }

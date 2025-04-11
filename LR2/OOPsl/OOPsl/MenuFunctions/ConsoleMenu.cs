@@ -106,7 +106,7 @@ namespace OOPsl.MenuFunctions
             Console.Clear();
             Console.WriteLine("=== Изменение настроек редактора ===");
             Console.WriteLine($"Текущая тема: {EditorSettings.Instance.Theme}");
-            Console.WriteLine($"Текущий размер шрифта: {EditorSettings.Instance.FontSize}");
+            //Console.WriteLine($"Текущий размер шрифта: {EditorSettings.Instance.FontSize}");
             Console.WriteLine();
 
             Console.Write("Введите новую тему (Dark/Light): ");
@@ -127,20 +127,20 @@ namespace OOPsl.MenuFunctions
                 Console.Clear();
             }
 
-            Console.Write("Введите новый размер шрифта (целое число): ");
-            string fontSizeInput = Console.ReadLine();
-            if (int.TryParse(fontSizeInput, out int newFontSize))
-            {
-                EditorSettings.Instance.FontSize = newFontSize;
-                EditorSettings.Instance.ApplyFontSettings();
-            }
-            else
-            {
-                Console.WriteLine("Некорректное значение размера шрифта.");
-            }
+            //Console.Write("Введите новый размер шрифта (целое число): ");
+            //string fontSizeInput = Console.ReadLine();
+            //if (int.TryParse(fontSizeInput, out int newFontSize))
+            //{
+            //    EditorSettings.Instance.FontSize = newFontSize;
+            //    EditorSettings.Instance.ApplyFontSettings();
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Некорректное значение размера шрифта.");
+            //}
 
-            Console.WriteLine("Настройки сохранены. Нажмите любую клавишу для возврата...");
-            Console.ReadKey();
+            //Console.WriteLine("Настройки сохранены. Нажмите любую клавишу для возврата...");
+            //Console.ReadKey();
         }
 
     }
