@@ -5,18 +5,30 @@ using System.Text.RegularExpressions;
 
 namespace OOPsl.DocumentFunctions.Displays
 {
+    public class StyledChar
+    {
+        public char Character { get; }
+        public bool Bold { get; }
+        public bool Italic { get; }
+        public bool Underline { get; }
+
+        public StyledChar(char ch, bool bold, bool italic, bool underline)
+        {
+            Character = ch;
+            Bold = bold;
+            Italic = italic;
+            Underline = underline;
+        }
+    }
+
     public class MarkdownDisplayStrategy : IDisplayStrategy
     {
         private const string ResetAnsi = "\x1b[0m";
-        private readonly Stack<string> _styleStack = new Stack<string>();
-        private readonly Stack<string> _tagStack = new Stack<string>();
-        private readonly List<string> _errors = new List<string>();
 
         public void Display(Document document)
         {
             string content = document.Content;
             var errors = ValidateMarkdown(content);
-
             if (errors.Count > 0)
             {
                 Console.WriteLine("Ошибки форматирования:");
@@ -25,21 +37,19 @@ namespace OOPsl.DocumentFunctions.Displays
                 return;
             }
 
-            ApplyFormatting(ref content);
-            Console.WriteLine(content + ResetAnsi);
+            string formatted = ApplyFormatting(content);
+            Console.WriteLine(formatted + ResetAnsi);
         }
 
         private List<string> ValidateMarkdown(string content)
         {
             var errors = new List<string>();
             var stack = new Stack<string>();
-            var matches = Regex.Matches(content, @"(\*{3}|\*{2}|\*|<u>|<\/u>)");
-
+            var matches = Regex.Matches(content, @"(\*{3}|\*{2}|\*|<u>|</u>)");
             foreach (Match match in matches)
             {
                 string token = match.Value;
                 int position = match.Index;
-
                 switch (token)
                 {
                     case "<u>":
@@ -50,53 +60,136 @@ namespace OOPsl.DocumentFunctions.Displays
                             errors.Add($"Непарный тег </u> на позиции {position}");
                         break;
                     default:
-                        HandleAsterisks(token, position, stack, errors);
                         break;
                 }
             }
-
             while (stack.Count > 0)
                 errors.Add($"Незакрытый тег: {stack.Pop()}");
+
+            bool currentBold = false;
+            bool currentItalic = false;
+            int i = 0;
+            while (i < content.Length)
+            {
+                if (content[i] == '\\' && i + 1 < content.Length)
+                {
+                    i += 2;
+                    continue;
+                }
+                if (i <= content.Length - 3 && content.Substring(i, 3) == "***")
+                {
+                    currentBold = !currentBold;
+                    currentItalic = !currentItalic;
+                    i += 3;
+                    continue;
+                }
+                if (i <= content.Length - 2 && content.Substring(i, 2) == "**")
+                {
+                    currentBold = !currentBold;
+                    i += 2;
+                    continue;
+                }
+                if (content[i] == '*')
+                {
+                    currentItalic = !currentItalic;
+                    i++;
+                    continue;
+                }
+                if (i <= content.Length - 3 && content.Substring(i, 3) == "<u>")
+                {
+                    i += "<u>".Length;
+                    continue;
+                }
+                if (i <= content.Length - 4 && content.Substring(i, 4) == "</u>")
+                {
+                    i += "</u>".Length;
+                    continue;
+                }
+                i++;
+            }
+
+            if (currentBold)
+                errors.Add("Некорректное использование символов '**' или '***': незакрытый жирный текст.");
+            if (currentItalic)
+                errors.Add("Некорректное использование символа '*': незакрытый курсивный текст.");
 
             return errors;
         }
 
-        private void HandleAsterisks(string token, int position, Stack<string> stack, List<string> errors)
+        private string ApplyFormatting(string content)
         {
-            string tagType = token switch
-            {
-                "*" => "i",
-                "**" => "b",
-                "***" => "bi",
-                _ => throw new ArgumentException("Недопустимый тег")
-            };
+            var styledChars = new List<StyledChar>();
 
-            if (stack.Count > 0 && stack.Peek() == tagType)
+            bool currentBold = false;
+            bool currentItalic = false;
+            bool currentUnderline = false;
+            int i = 0;
+            while (i < content.Length)
             {
-                stack.Pop();
+                if (content[i] == '\\' && i + 1 < content.Length)
+                {
+                    styledChars.Add(new StyledChar(content[i + 1], currentBold, currentItalic, currentUnderline));
+                    i += 2;
+                    continue;
+                }
+
+                if (i <= content.Length - 3 && content.Substring(i, 3) == "***")
+                {
+                    currentBold = !currentBold;
+                    currentItalic = !currentItalic;
+                    i += 3;
+                    continue;
+                }
+                if (i <= content.Length - 2 && content.Substring(i, 2) == "**")
+                {
+                    currentBold = !currentBold;
+                    i += 2;
+                    continue;
+                }
+                if (content[i] == '*')
+                {
+                    currentItalic = !currentItalic;
+                    i++;
+                    continue;
+                }
+                if (i <= content.Length - 3 && content.Substring(i, 3) == "<u>")
+                {
+                    currentUnderline = true;
+                    i += "<u>".Length;
+                    continue;
+                }
+                if (i <= content.Length - 4 && content.Substring(i, 4) == "</u>")
+                {
+                    currentUnderline = false;
+                    i += "</u>".Length;
+                    continue;
+                }
+
+                styledChars.Add(new StyledChar(content[i], currentBold, currentItalic, currentUnderline));
+                i++;
             }
-            else
+
+            var sb = new StringBuilder();
+            foreach (var sc in styledChars)
             {
-                stack.Push(tagType);
+                string ansiSequence = GetAnsiCode(sc);
+                sb.Append(ansiSequence);
+                sb.Append(sc.Character);
+                sb.Append(ResetAnsi);
             }
+
+            return sb.ToString();
         }
 
-        private void ApplyFormatting(ref string content)
+        private string GetAnsiCode(StyledChar sc)
         {
-            content = Regex.Replace(content, @"<u>\*\*\*(.+?)\*\*\*</u>", 
-                m => $"\x1b[4;1;3m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
-
-            content = Regex.Replace(content, @"\*\*\*(.+?)\*\*\*", 
-                m => $"\x1b[1;3m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
-
-            content = Regex.Replace(content, @"<u>(.+?)</u>", 
-                m => $"\x1b[4m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
-
-            content = Regex.Replace(content, @"\*\*(.+?)\*\*", 
-                m => $"\x1b[1m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
-
-            content = Regex.Replace(content, @"\*(?!\*)(.+?)\*", 
-                m => $"\x1b[3m{m.Groups[1].Value}\x1b[0m", RegexOptions.Singleline);
+            var codes = new List<string>();
+            if (sc.Bold) codes.Add("1");
+            if (sc.Italic) codes.Add("3");
+            if (sc.Underline) codes.Add("4");
+            if (codes.Count == 0)
+                return ResetAnsi;
+            return $"\x1b[{string.Join(";", codes)}m";
         }
     }
 }

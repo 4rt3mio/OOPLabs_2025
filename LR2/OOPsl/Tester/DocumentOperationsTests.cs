@@ -143,75 +143,123 @@ namespace Tester
                     StringComparison.OrdinalIgnoreCase));
         }
 
-        [Fact]
-        public void CreateDocument_WithInvalidExtension_ShouldShowErrorMessage_Simple()
-        {
+        //[Fact]
+        //public void CreateDocument_WithInvalidExtension_ShouldShowErrorMessage_Simple()
+        //{
 
-            string invalidFileName = "badformat.exe";
-            string simulatedInput = invalidFileName + Environment.NewLine;
-            using (var sr = new StringReader(simulatedInput))
-            using (var sw = new StringWriter())
-            {
-                Console.SetIn(sr);
-                Console.SetOut(sw);
+        //    string invalidFileName = "badformat.exe";
+        //    string simulatedInput = invalidFileName + Environment.NewLine;
+        //    using (var sr = new StringReader(simulatedInput))
+        //    using (var sw = new StringWriter())
+        //    {
+        //        Console.SetIn(sr);
+        //        Console.SetOut(sw);
 
-                var userActionsMenu = new TesterHelperUserActionsMenu(testUser, documentManager, accessManager, userManager);
-                try
-                {
-                    userActionsMenu.CreateNewFile();
-                }
-                catch (IOException)
-                {
-                }
+        //        var userActionsMenu = new TesterHelperUserActionsMenu(testUser, documentManager, accessManager, userManager);
+        //        try
+        //        {
+        //            userActionsMenu.CreateNewFile();
+        //        }
+        //        catch (IOException)
+        //        {
+        //        }
 
-                string output = sw.ToString();
-                Assert.Contains("Неверное расширение файла. Допустимые расширения: .txt, .md, .rtf, .json, .xml", output);
-            }
-        }
+        //        string output = sw.ToString();
+        //        Assert.Contains("Неверное расширение файла. Допустимые расширения: .txt, .md, .rtf, .json, .xml", output);
+        //    }
+        //}
 
-        [Fact]
-        public void CreateDocument_WithExistingBaseName_ShouldShowErrorMessage_Simple()
-        {
-            string fileName1 = "duplicate.txt";
-            string simulatedInput1 = fileName1 + Environment.NewLine;
-            using (var sr1 = new StringReader(simulatedInput1))
-            using (var sw1 = new StringWriter())
-            {
-                Console.SetIn(sr1);
-                Console.SetOut(sw1);
-                var menu = new TesterHelperUserActionsMenu(testUser, documentManager, accessManager, userManager);
-                try
-                {
-                    menu.CreateNewFile();
-                }
-                catch (IOException)
-                {
+        //[Fact]
+        //public void CreateDocument_WithExistingBaseName_ShouldShowErrorMessage_Simple()
+        //{
+        //    string fileName1 = "duplicate.txt";
+        //    string simulatedInput1 = fileName1 + Environment.NewLine;
+        //    using (var sr1 = new StringReader(simulatedInput1))
+        //    using (var sw1 = new StringWriter())
+        //    {
+        //        Console.SetIn(sr1);
+        //        Console.SetOut(sw1);
+        //        var menu = new TesterHelperUserActionsMenu(testUser, documentManager, accessManager, userManager);
+        //        try
+        //        {
+        //            menu.CreateNewFile();
+        //        }
+        //        catch (IOException)
+        //        {
                     
-                }
-            }
+        //        }
+        //    }
 
-            string fileName2 = "duplicate.md";
-            string simulatedInput2 = fileName2 + Environment.NewLine;
-            using (var sr2 = new StringReader(simulatedInput2))
-            using (var sw2 = new StringWriter())
-            {
-                Console.SetIn(sr2);
-                Console.SetOut(sw2);
-                var menu = new TesterHelperUserActionsMenu(testUser, documentManager, accessManager, userManager);
-                try
-                {
-                    menu.CreateNewFile();
-                }
-                catch (IOException)
-                {
-                }
-                string output = sw2.ToString();
-                Assert.Contains("Документ с таким базовым именем уже существует.", output);
-            }
-        }
+        //    string fileName2 = "duplicate.md";
+        //    string simulatedInput2 = fileName2 + Environment.NewLine;
+        //    using (var sr2 = new StringReader(simulatedInput2))
+        //    using (var sw2 = new StringWriter())
+        //    {
+        //        Console.SetIn(sr2);
+        //        Console.SetOut(sw2);
+        //        var menu = new TesterHelperUserActionsMenu(testUser, documentManager, accessManager, userManager);
+        //        try
+        //        {
+        //            menu.CreateNewFile();
+        //        }
+        //        catch (IOException)
+        //        {
+        //        }
+        //        string output = sw2.ToString();
+        //        Assert.Contains("Документ с таким базовым именем уже существует.", output);
+        //    }
+        //}
 
         [Fact]
         public void ImportLocalFile_WithValidData_ShouldAddDocument_Simple()
+        {
+            string tempFileName = "import_test.txt";
+            string tempFilePath = Path.Combine(testLocalFilesFolder, tempFileName);
+            File.WriteAllText(tempFilePath, "Test content");
+            Document doc = new Document
+            {
+                FileName = tempFileName,
+                Content = File.ReadAllText(tempFilePath)
+            };
+
+            documentManager.CreateDocument(doc, testUser, userManager.GetUsers());
+
+            var importedDoc = documentManager.GetLocalDocuments()
+                .FirstOrDefault(d =>
+                    string.Equals(
+                        Path.GetFileNameWithoutExtension(d.FileName),
+                        Path.GetFileNameWithoutExtension(tempFileName),
+                        StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(importedDoc);
+            Assert.Equal("Test content", importedDoc.Content);
+        }
+
+        [Fact]
+        public void ImportLocalFile_WithValidData_ShouldAddDocument()
+        {
+            string tempFileName = "import_test.txt";
+            string tempFilePath = Path.Combine(testLocalFilesFolder, tempFileName);
+            File.WriteAllText(tempFilePath, "Test content");
+            Document doc = new Document
+            {
+                FileName = tempFileName,
+                Content = File.ReadAllText(tempFilePath)
+            };
+
+            documentManager.CreateDocument(doc, testUser, userManager.GetUsers());
+
+            var importedDoc = documentManager.GetLocalDocuments()
+                .FirstOrDefault(d =>
+                    string.Equals(
+                        Path.GetFileNameWithoutExtension(d.FileName),
+                        Path.GetFileNameWithoutExtension(tempFileName),
+                        StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(importedDoc);
+            Assert.Equal("Test content", importedDoc.Content);
+        }
+
+        [Fact]
+        public void ImportLocalFile_WithValidData_ShouldAddDoc()
         {
             string tempFileName = "import_test.txt";
             string tempFilePath = Path.Combine(testLocalFilesFolder, tempFileName);

@@ -406,31 +406,41 @@ namespace OOPsl.MenuFunctions
 
                         if (!sourceExtension.Equals(targetExtension, StringComparison.OrdinalIgnoreCase))
                         {
-                            if ((sourceExtension == "md" || sourceExtension == "rtf") && (targetExtension == "md" || targetExtension == "rtf"))
+                            try
                             {
-                                if (sourceExtension == "md" && targetExtension == "rtf")
+                                if ((sourceExtension == "md" || sourceExtension == "rtf") && (targetExtension == "md" || targetExtension == "rtf"))
                                 {
-                                    MarkdownToRtfConverter mdToRtf = new MarkdownToRtfConverter();
-                                    newContent = mdToRtf.Convert(docToOpen.Content);
+                                    if (sourceExtension == "md" && targetExtension == "rtf")
+                                    {
+                                        MarkdownToRtfConverter mdToRtf = new MarkdownToRtfConverter();
+                                        newContent = mdToRtf.Convert(docToOpen.Content);
+                                    }
+                                    else if (sourceExtension == "rtf" && targetExtension == "md")
+                                    {
+                                        RtfToMarkdownConverter rtfToMd = new RtfToMarkdownConverter();
+                                        newContent = rtfToMd.Convert(docToOpen.Content);
+                                    }
                                 }
-                                else if (sourceExtension == "rtf" && targetExtension == "md")
+                                else if ((sourceExtension == "json" || sourceExtension == "xml") && (targetExtension == "json" || targetExtension == "xml"))
                                 {
-                                    RtfToMarkdownConverter rtfToMd = new RtfToMarkdownConverter();
-                                    newContent = rtfToMd.Convert(docToOpen.Content);
+                                    if (sourceExtension == "json" && targetExtension == "xml")
+                                    {
+                                        JsonToXmlConverter jsonToXml = new JsonToXmlConverter();
+                                        newContent = jsonToXml.Convert(docToOpen.Content);
+                                    }
+                                    else if (sourceExtension == "xml" && targetExtension == "json")
+                                    {
+                                        XmlToJsonConverter xmlToJson = new XmlToJsonConverter();
+                                        newContent = xmlToJson.Convert(docToOpen.Content);
+                                    }
                                 }
                             }
-                            else if ((sourceExtension == "json" || sourceExtension == "xml") && (targetExtension == "json" || targetExtension == "xml"))
+                            catch (Exception ex)
                             {
-                                if (sourceExtension == "json" && targetExtension == "xml")
-                                {
-                                    JsonToXmlConverter jsonToXml = new JsonToXmlConverter();
-                                    newContent = jsonToXml.Convert(docToOpen.Content);
-                                }
-                                else if (sourceExtension == "xml" && targetExtension == "json")
-                                {
-                                    XmlToJsonConverter xmlToJson = new XmlToJsonConverter();
-                                    newContent = xmlToJson.Convert(docToOpen.Content);
-                                }
+                                Console.WriteLine("Файл не был сохранен! Ошибка: ", ex.Message);
+                                Console.WriteLine("\nНажмите любую клавишу для возврата...");
+                                Console.ReadKey();
+                                return;
                             }
                         }
 
