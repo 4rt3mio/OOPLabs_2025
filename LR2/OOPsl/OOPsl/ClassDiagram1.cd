@@ -99,7 +99,7 @@
   <Class Name="OOPsl.DocumentFunctions.Displayers.TextEditor">
     <Position X="1.25" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEEAAgAEAACABAAQAJAAQAIABICAAAAQAI=</HashCode>
+      <HashCode>AAAAAAAAAAEEEAgAEAACABAAQAJAAQAIABICAAAAQAI=</HashCode>
       <FileName>DocumentFunctions\Displayers\TextEditor.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -172,8 +172,15 @@
         <Position X="-0.427" Y="1.422" />
       </MemberNameLabel>
     </AssociationLine>
+    <AssociationLine Name="editor" Type="OOPsl.DocumentFunctions.Displayers.TextEditor" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="4.688" />
+        <Point X="2" Y="4.688" />
+        <Point X="2" Y="8" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AIAgACAAAAAAAACAABAAAQQBAQAAAEAAABEAgAAAAAA=</HashCode>
+      <HashCode>AIAgACAAAABAAACAABAAAQQBAQAAAEAAABEAgAAAAAA=</HashCode>
       <FileName>MenuFunctions\UserActionsMenu.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -181,6 +188,7 @@
       <Field Name="documentManager" />
       <Field Name="accessManager" />
       <Field Name="userManager" />
+      <Field Name="editor" />
     </ShowAsAssociation>
   </Class>
   <Class Name="OOPsl.MenuFunctions.ApplicationMenu">

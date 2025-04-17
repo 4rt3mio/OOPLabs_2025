@@ -24,9 +24,14 @@ namespace OOPsl.DocumentFunctions.Displayers
         private int? selectionAnchor = null;
 
         private Stopwatch inputTimer = new Stopwatch();
-        private readonly TimeSpan inputDelay = TimeSpan.FromMilliseconds(100);
+        private readonly TimeSpan inputDelay = TimeSpan.FromMilliseconds(50);
 
-        public TextEditor(Document document)
+        public TextEditor()
+        {
+            inputTimer.Start();
+        }
+
+        public void LoadDocument(Document document)
         {
             this.document = document;
             if (File.Exists(document.FileName))
@@ -37,17 +42,9 @@ namespace OOPsl.DocumentFunctions.Displayers
             {
                 IStorageStrategy cloudStorage = new GoogleDriveStorage();
                 Document cloudDoc = cloudStorage.Load(Path.GetFileName(document.FileName));
-                if (cloudDoc != null)
-                {
-                    text = cloudDoc.Content;
-                }
-                else
-                {
-                    text = "";
-                }
+                text = cloudDoc != null ? cloudDoc.Content : "";
             }
             cursorIndex = text.Length;
-            inputTimer.Start();
         }
 
         private void UpdateScreen(string searchQuery = "")
@@ -120,7 +117,7 @@ namespace OOPsl.DocumentFunctions.Displayers
                 }
                 Console.ResetColor();
                 Console.WriteLine();
-                globalIndex++; 
+                globalIndex++;
             }
             Console.ResetColor();
             while (Console.KeyAvailable)
@@ -386,6 +383,16 @@ namespace OOPsl.DocumentFunctions.Displayers
                     var insCmd = new InsertCommand(cursorIndex, key.KeyChar.ToString(), text);
                     document.CommandManager.ExecuteCommand(insCmd);
                     text = insCmd.UpdatedText;
+                    cursorIndex++;
+                }
+                int windowWidth = Console.WindowWidth;
+                int lastNewLine = text.LastIndexOf('\n', Math.Max(0, cursorIndex - 1));
+                int currentLineLength = (lastNewLine == -1) ? cursorIndex : cursorIndex - lastNewLine - 1;
+                if (currentLineLength >= windowWidth)
+                {
+                    var autoInsCmd = new InsertCommand(cursorIndex, "\n", text);
+                    document.CommandManager.ExecuteCommand(autoInsCmd);
+                    text = autoInsCmd.UpdatedText;
                     cursorIndex++;
                 }
             }

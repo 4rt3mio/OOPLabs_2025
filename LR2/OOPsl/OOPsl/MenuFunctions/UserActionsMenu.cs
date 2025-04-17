@@ -15,6 +15,7 @@ namespace OOPsl.MenuFunctions
         private DocumentManager documentManager;
         private DocumentAccessManager accessManager;
         private UserManager userManager;
+        private TextEditor editor;
 
         public UserActionsMenu(User user, DocumentManager documentManager, DocumentAccessManager accessManager, UserManager userManager)
         {
@@ -22,6 +23,7 @@ namespace OOPsl.MenuFunctions
             this.documentManager = documentManager;
             this.accessManager = accessManager;
             this.userManager = userManager;
+            editor = new TextEditor();
         }
 
         public void Display()
@@ -32,15 +34,16 @@ namespace OOPsl.MenuFunctions
                 Console.Clear();
                 Console.WriteLine($"=== Действия для пользователя: {currentUser.Name} ===");
                 Console.WriteLine("1. Создать новый файл");
-                Console.WriteLine("2. Показать все файлы (с ролями)");
-                Console.WriteLine("3. Открыть файл");
-                Console.WriteLine("4. Удалить файл");
-                Console.WriteLine("5. Посмотреть историю файла");
-                Console.WriteLine("6. Изменить роли для файла");
-                Console.WriteLine("7. Подписаться на изменения документа");
-                Console.WriteLine("8. Показать уведомления");
-                Console.WriteLine("9. Вернуться к выбору пользователя");
-                Console.WriteLine("10. Выход из приложения");
+                Console.WriteLine("2. Импортировать файл из локальной системы");
+                Console.WriteLine("3. Показать все файлы (с ролями)");
+                Console.WriteLine("4. Открыть файл");
+                Console.WriteLine("5. Удалить файл");
+                Console.WriteLine("6. Посмотреть историю файла");
+                Console.WriteLine("7. Изменить роли для файла");
+                Console.WriteLine("8. Подписаться на изменения документа");
+                Console.WriteLine("9. Показать уведомления");
+                Console.WriteLine("10. Вернуться к выбору пользователя");
+                Console.WriteLine("11. Выход из приложения");
                 Console.Write("Выберите действие: ");
                 string choice = Console.ReadLine();
 
@@ -50,30 +53,33 @@ namespace OOPsl.MenuFunctions
                         CreateNewFile();
                         break;
                     case "2":
-                        ShowAllFiles();
+                        ImportLocalFile();
                         break;
                     case "3":
-                        OpenFile();
+                        ShowAllFiles();
                         break;
                     case "4":
-                        DeleteFile();
+                        OpenFile();
                         break;
                     case "5":
-                        ViewDocumentHistory();
+                        DeleteFile();
                         break;
                     case "6":
-                        ChangeRolesForFile();
+                        ViewDocumentHistory();
                         break;
                     case "7":
-                        SubscribeToDocumentChanges();
+                        ChangeRolesForFile();
                         break;
                     case "8":
-                        ShowNotifications();
+                        SubscribeToDocumentChanges();
                         break;
                     case "9":
-                        exitMenu = true;
+                        ShowNotifications();
                         break;
                     case "10":
+                        exitMenu = true;
+                        break;
+                    case "11":
                         Environment.Exit(0);
                         break;
                     default:
@@ -122,49 +128,80 @@ namespace OOPsl.MenuFunctions
             Console.ReadKey();
         }
 
-        //private void ImportLocalFile()
-        //{
-        //    Console.Clear();
-        //    Console.Write("Введите полный путь к файлу для импорта: ");
-        //    string filePath = Console.ReadLine();
+        private void ImportLocalFile()
+        {
+            Console.Clear();
+            Console.Write("Введите полный путь к файлу для импорта: ");
+            string importPath = Console.ReadLine();
 
-        //    if (!File.Exists(filePath))
-        //    {
-        //        Console.WriteLine("Файл не найден. Нажмите любую клавишу для возврата...");
-        //        Console.ReadKey();
-        //        return;
-        //    }
+            if (!File.Exists(importPath))
+            {
+                Console.WriteLine("Файл не найден. Нажмите любую клавишу для возврата...");
+                Console.ReadKey();
+                return;
+            }
 
-        //    string extension = Path.GetExtension(filePath).ToLower();
-        //    string[] allowedExtensions = { ".txt", ".md", ".rtf", ".json", ".xml" };
-        //    if (!allowedExtensions.Contains(extension))
-        //    {
-        //        Console.WriteLine("Недопустимое расширение файла. Допустимые расширения: .txt, .md, .rtf, .json, .xml");
-        //        Console.WriteLine("Нажмите любую клавишу для возврата...");
-        //        Console.ReadKey();
-        //        return;
-        //    }
+            string[] allowedExtensions = { ".txt", ".md", ".rtf", ".json", ".xml" };
+            string importExtension = Path.GetExtension(importPath).ToLower();
+            if (!allowedExtensions.Contains(importExtension))
+            {
+                Console.WriteLine("Недопустимое расширение файла. Допустимые расширения: .txt, .md, .rtf, .json, .xml");
+                Console.WriteLine("Нажмите любую клавишу для возврата...");
+                Console.ReadKey();
+                return;
+            }
 
-        //    string content;
-        //    try
-        //    {
-        //        content = File.ReadAllText(filePath);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("Ошибка чтения файла: " + ex.Message);
-        //        Console.ReadKey();
-        //        return;
-        //    }
+            string content;
+            try
+            {
+                content = File.ReadAllText(importPath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка чтения файла: " + ex.Message);
+                Console.WriteLine("Нажмите любую клавишу для возврата...");
+                Console.ReadKey();
+                return;
+            }
 
-        //    Document importedDoc = new Document();
-        //    importedDoc.FileName = Path.GetFileName(filePath);
+            string fileName;
+            while (true)
+            {
+                Console.Write("Введите имя для нового документа (с расширением): ");
+                fileName = Console.ReadLine();
 
-        //    importedDoc.Content = content;
-        //    documentManager.CreateDocument(importedDoc, currentUser, userManager.GetUsers());
-        //    Console.WriteLine("Документ успешно импортирован. Нажмите любую клавишу для возврата...");
-        //    Console.ReadKey();
-        //}
+                string ext = Path.GetExtension(fileName).ToLower();
+                if (string.IsNullOrWhiteSpace(ext) || !allowedExtensions.Contains(ext))
+                {
+                    Console.WriteLine("Неверное расширение файла. Допустимые расширения: .txt, .md, .rtf, .json, .xml");
+                    continue;
+                }
+
+                string baseName = Path.GetFileNameWithoutExtension(fileName);
+                bool nameExists = documentManager.GetAllDocuments()
+                    .Any(d => Path.GetFileNameWithoutExtension(d.FileName)
+                        .Equals(baseName, StringComparison.OrdinalIgnoreCase));
+
+                if (nameExists)
+                {
+                    Console.WriteLine("Документ с таким базовым именем уже существует. Пожалуйста, выберите другое имя.");
+                    continue;
+                }
+
+                break;
+            }
+
+            Document newDoc = new Document
+            {
+                FileName = fileName,
+                Content = content
+            };
+
+            documentManager.CreateDocument(newDoc, currentUser, userManager.GetUsers());
+            Console.WriteLine($"Документ \"{fileName}\" успешно импортирован. Нажмите любую клавишу для продолжения...");
+            Console.ReadKey();
+        }
+
         private void SubscribeToDocumentChanges()
         {
             Console.Clear();
@@ -326,7 +363,7 @@ namespace OOPsl.MenuFunctions
                 if (modeKey.KeyChar == '1')
                 {
                     Console.WriteLine("Открывается режим редактирования. Нажмите Escape для выхода из редактора.");
-                    TextEditor editor = new TextEditor(docToOpen);
+                    editor.LoadDocument(docToOpen);
                     try
                     {
                         editor.Run();
