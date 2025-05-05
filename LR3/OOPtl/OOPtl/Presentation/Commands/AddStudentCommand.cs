@@ -1,9 +1,10 @@
 ﻿using OOPtl.Application.DTOs;
+using OOPtl.Application.Interfaces;
 using OOPtl.Application.Services;
 
 namespace OOPtl.Presentation.Commands
 {
-    public class AddStudentCommand
+    public class AddStudentCommand : ICommand
     {
         private readonly StudentService _service;
 
