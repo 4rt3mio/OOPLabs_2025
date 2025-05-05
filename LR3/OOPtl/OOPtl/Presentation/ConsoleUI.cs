@@ -34,7 +34,7 @@ namespace OOPtl.Presentation
                         await _editCommand.ExecuteAsync();
                         break;
                     case "3":
-                        _viewCommand.Execute();
+                        await _viewCommand.ExecuteAsync();
                         break;
                     case "4":
                         return;

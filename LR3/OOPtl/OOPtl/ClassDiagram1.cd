@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OOPtl.Application.Services.StudentService">
+    <Position X="6" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAABEAAAEAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\Services\StudentService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_quoteAdapter" />
+      <Field Name="_repository" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OOPtl.Presentation.Commands.AddStudentCommand" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Presentation\Commands\AddStudentCommand.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_service" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OOPtl.Presentation.Commands.EditStudentCommand" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Presentation\Commands\EditStudentCommand.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_service" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OOPtl.Presentation.Commands.ViewStudentsCommand">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Presentation\Commands\ViewStudentsCommand.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_service" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OOPtl.Presentation.ConsoleUI">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <AssociationLine Name="_addCommand" Type="OOPtl.Presentation.Commands.AddStudentCommand" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="1.5" />
+        <Point X="5.156" Y="1.5" />
+        <Point X="5.156" Y="2.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAQAAAAAAAAAAAAAAAAAAACAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Presentation\ConsoleUI.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_addCommand" />
+      <Field Name="_editCommand" />
+      <Field Name="_viewCommand" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OOPtl.DataAccess.Api.QuoteApiAdapter">
+    <Position X="8.5" Y="7" Width="1.5" />
+    <NestedTypes>
+      <Class Name="OOPtl.DataAccess.Api.QuoteApiAdapter.QuoteApiResponse" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataAccess\Api\QuoteApiAdapter.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\Api\QuoteApiAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOPtl.DataAccess.Repositories.StudentRepository">
+    <Position X="5.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAIAAAAAACAACAACAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\Repositories\StudentRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_students" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OOPtl.Domain.Entities.Student">
+    <Position X="3.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Domain\Entities\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOPtl.Domain.Factories.QuoteFactory">
+    <Position X="7.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Factories\QuoteFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOPtl.Domain.Factories.StudentFactory">
+    <Position X="5.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Factories\StudentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOPtl.Domain.Validators.StudentValidator">
+    <Position X="1.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Validators\StudentValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="OOPtl.Application.Interfaces.ICommand">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Application\Interfaces\ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

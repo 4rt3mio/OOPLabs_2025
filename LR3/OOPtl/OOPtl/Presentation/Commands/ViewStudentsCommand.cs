@@ -1,8 +1,9 @@
-﻿using OOPtl.Application.Services;
+﻿using OOPtl.Application.Interfaces;
+using OOPtl.Application.Services;
 
 namespace OOPtl.Presentation.Commands
 {
-    public class ViewStudentsCommand
+    public class ViewStudentsCommand : ICommand
     {
         private readonly StudentService _service;
 
@@ -11,13 +12,13 @@ namespace OOPtl.Presentation.Commands
             _service = service;
         }
 
-        public void Execute()
+        public Task ExecuteAsync()
         {
             var students = _service.GetAllStudents();
             if (students.Count == 0)
             {
                 Console.WriteLine("No students in records");
-                return;
+                return Task.CompletedTask;
             }
 
             Console.WriteLine("\nStudent List:");
@@ -26,6 +27,8 @@ namespace OOPtl.Presentation.Commands
                 Console.WriteLine($"- {student.Name} (Grade: {student.Grade})");
             }
             Console.WriteLine();
+
+            return Task.CompletedTask;
         }
     }
 }
