@@ -6,7 +6,7 @@ using OOPtl.DataAccess.Repositories;
 
 var testAdapter = new QuoteApiAdapter();
 var quote = await testAdapter.GetRandomQuoteAsync();
-Console.WriteLine($"API Test Result: {quote.Content} - {quote.Author}\n");
+//Console.WriteLine($"API Test Result: {quote.Content} - {quote.Author}\n");
 
 var repository = new StudentRepository("students.json");
 var service = new StudentService(repository, testAdapter);
